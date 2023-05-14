@@ -5,31 +5,35 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/13 17:20:47 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/05/14 14:52:10 by aalfahal         ###   ########.fr       */
+/*   Created: 2023/05/14 15:11:49 by aalfahal          #+#    #+#             */
+/*   Updated: 2023/05/14 16:02:10 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanA.hpp"
-#include "HumanB.hpp"
-#include "Weapon.hpp"
+#include <iostream>
+#include <fstream>
+#include <string>
 
-int main()
+bool	replcaingFile(char **av)
 {
+	std::string s;
+	std::ifstream myFile; 
+	myFile.open(av[1]);
+	if (myFile.is_open() == false)
+		return (false);
+	std::ofstream outfile (".replace");
+	while (myFile.good())
 	{
-		Weapon club = Weapon("crude spiked club");
-		HumanA bob("Bob", club);
-		bob.attack();
-		club.setType("some other type of club");
-		bob.attack();
+		std::getline(myFile, s);
+		outfile << s << std::endl;	
 	}
-	{
-		Weapon cclub = Weapon("crude spiked club");
-		HumanB jim("Jim");
-		jim.setWeapon(cclub);
-		jim.attack();
-		cclub.setType("some other type of club");
-		jim.attack();
-	}
+	return (true);
+}
+
+int main(int ac, char **av)
+{
+	if (ac == 4)
+		if (replcaingFile(av) == false)
+			return (1);
 	return (0);
 }
