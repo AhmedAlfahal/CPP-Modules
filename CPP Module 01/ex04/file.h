@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   file.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/14 15:11:49 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/05/18 08:56:22 by aalfahal         ###   ########.fr       */
+/*   Created: 2023/05/18 08:54:42 by aalfahal          #+#    #+#             */
+/*   Updated: 2023/05/18 08:56:51 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "file.h"
+#ifndef FILE_H
+# define FILE_H
 
-int main(int ac, char **av)
-{
-	if (ac == 4)
-		if (replcaingFile(av) == false)
-			return (1);
-	return (0);
-}
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <sstream>
+
+std::string	replaceWords(std::string line, std::string oldWord, std::string newWord);
+bool	replcaingFile(char **av);
+
+#endif

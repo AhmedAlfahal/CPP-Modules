@@ -6,7 +6,7 @@
 #    By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/14 15:11:43 by aalfahal          #+#    #+#              #
-#    Updated: 2023/05/14 15:25:27 by aalfahal         ###   ########.fr        #
+#    Updated: 2023/05/18 08:56:35 by aalfahal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 
 NAME		=	file
 
-SRC			=	main.cpp
+SRC			=	main.cpp file.cpp
 
 OBJS		=	$(SRC:.cpp=.o)
 
