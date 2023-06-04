@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 14:43:06 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/06/04 18:56:11 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/06/04 20:15:13 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,25 @@ void Harl::complain( std::string level )
 	for (size_t i = 0; i < levels->size(); i++)
 		if (level == levels[i])
 			l = ++i;
-	if (l != 0)
-		(this->*(p[l - 1]))();
+	switch (l){
+		case 1:
+			(this->*(p[l - 1]))();
+			(this->*(p[l]))();
+			(this->*(p[l + 1]))();
+			(this->*(p[l + 2]))();
+			break;
+		case 2:
+			(this->*(p[l - 1]))();
+			(this->*(p[l]))();
+			(this->*(p[l + 1]))();
+			break;
+		case 3:
+			(this->*(p[l - 1]))();
+			(this->*(p[l]))();
+			break;
+		case 4: 
+			(this->*(p[l - 1]))();
+			break;
+		default: std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
+	}
 }
