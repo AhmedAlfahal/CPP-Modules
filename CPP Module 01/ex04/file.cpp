@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 08:55:21 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/05/18 08:57:00 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/06/05 21:35:42 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ std::string	replaceWords(std::string line, std::string oldWord, std::string newW
 	std::istringstream l(line);
 	std::string word;
 	std::string newLine;
+	std::string returnLine;
+	char *rl;
 	while (l >> word)
 	{
 		if (word == oldWord)
@@ -24,7 +26,10 @@ std::string	replaceWords(std::string line, std::string oldWord, std::string newW
 		else
 			newLine = newLine + word + " ";
 	}
-	return (newLine);
+	rl = (char *)newLine.c_str();
+	rl[newLine.length() - 1] = 0;
+	returnLine = rl;
+	return (returnLine);
 }
 
 bool	replcaingFile(char **av)
@@ -35,7 +40,10 @@ bool	replcaingFile(char **av)
 	std::ifstream myFile;
 	myFile.open(av[1]);
 	if (myFile.is_open() == false)
+	{
+		std::cout << av[1] << " :cannot be accessed" << std::endl;
 		return (false);
+	}
 	std::ofstream outfile (newFile.c_str());
 	while (myFile.good())
 	{

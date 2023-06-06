@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/05/14 15:11:43 by aalfahal          #+#    #+#              #
-#    Updated: 2023/06/05 21:26:27 by aalfahal         ###   ########.fr        #
+#    Created: 2023/06/06 21:31:24 by aalfahal          #+#    #+#              #
+#    Updated: 2023/06/06 21:33:07 by aalfahal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,9 @@ CXX			=	c++
 
 CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 
-NAME		=	file
+NAME		=	Zombie
 
-SRC			=	main.cpp file.cpp
+SRC			=	main.cpp Fixed.cpp
 
 OBJS		=	$(SRC:.cpp=.o)
 
