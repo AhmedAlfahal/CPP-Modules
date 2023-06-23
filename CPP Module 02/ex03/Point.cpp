@@ -1,30 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   Point.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/09 20:37:42 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/06/21 10:27:34 by aalfahal         ###   ########.fr       */
+/*   Created: 2023/06/23 19:04:08 by aalfahal          #+#    #+#             */
+/*   Updated: 2023/06/23 19:23:19 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_HPP
-# define FIXED_HPP
-#include <iostream>
+# include"Point.hpp"
 
-class Fixed{
-	private:
-		int					fixed;
-		static const int	bits = 8;
-	public:
-		Fixed();
-		Fixed( Fixed &aFix);
-		~Fixed();
-		Fixed & operator= ( Fixed &aFix);
-		int getRawBits( void ) const;
-		void setRawBits( int const raw );
-};
+Point::Point()
+{
+	this->x.setRawBits(0);
+	this->y.setRawBits(0);
+}
 
-#endif
+Point::Point( const float aX, const float aY )
+{
+	Fixed	tmpX(x);
+	Fixed	tmpY(y);
+	this->x = tmpX;
+	this->y = tmpY;
+}
+
+Point::Point( const Point &aPoint)
+{
+	this->x = aPoint.x;
+}
+
+Point::~Point()
+{
+	
+}
+
+Point::Point & operator = ( const Point &aFix )
+{
+	
+}
