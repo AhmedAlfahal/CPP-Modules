@@ -6,13 +6,14 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 20:37:42 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/06/23 16:37:55 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/06/25 15:42:35 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FIXED_HPP
 # define FIXED_HPP
 # include <iostream>
+# include <cmath>
 
 class Fixed{
 	private:
