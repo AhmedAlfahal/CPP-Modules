@@ -6,11 +6,11 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 20:37:35 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/06/23 16:37:38 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/06/25 13:17:14 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+# include"Fixed.hpp"
 
 Fixed::Fixed()
 {
@@ -37,7 +37,7 @@ Fixed::~Fixed(){
 
 Fixed & Fixed :: operator= ( const Fixed &aFix)
 {
-	setRawBits(aFix.getRawBits());
+	this->setRawBits(aFix.getRawBits());
 	return (*this);
 }
 
@@ -83,6 +83,11 @@ Fixed operator- (const Fixed &a, const Fixed &b)
 Fixed operator* (const Fixed &a, const Fixed &b)
 {
 	return (a.toFloat() * b.toFloat());
+}
+
+Fixed operator* (const Fixed &a, const float b)
+{
+	return (a.toFloat() * b);
 }
 
 Fixed operator/ (const Fixed &a, const Fixed &b)

@@ -6,7 +6,7 @@
 #    By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/06 21:31:24 by aalfahal          #+#    #+#              #
-#    Updated: 2023/06/10 10:43:02 by aalfahal         ###   ########.fr        #
+#    Updated: 2023/06/24 18:12:46 by aalfahal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 
 NAME		=	Fixed
 
-SRC			=	main.cpp Fixed.cpp
+SRC			=	main.cpp Fixed.cpp Point.cpp bsp.cpp
 
 OBJS		=	$(SRC:.cpp=.o)
 

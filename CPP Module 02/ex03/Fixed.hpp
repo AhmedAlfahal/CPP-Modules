@@ -6,12 +6,13 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 20:37:42 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/06/23 16:37:55 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/06/25 13:17:47 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FIXED_HPP
 # define FIXED_HPP
+
 # include <iostream>
 
 class Fixed{
@@ -48,6 +49,7 @@ bool operator!= ( const Fixed &a, const Fixed &b );
 Fixed operator+ ( const Fixed &a, const Fixed &b );
 Fixed operator- ( const Fixed &a, const Fixed &b );
 Fixed operator* ( const Fixed &a, const Fixed &b );
+Fixed operator* (const Fixed &a, const float b);
 Fixed operator/ ( const Fixed &a, const Fixed &b );
 std::ostream & operator<< ( std::ostream &out, const Fixed &aFix );
 
