@@ -20,6 +20,8 @@ int main ( void )
 
 	a = b;
 	a.attack("Nothing");
+    a.takeDamage(10);
+    a.attack("Ahmeed");
 	b.attack("Ahmed");
 	c.attack("Ahmed");
 	b.beRepaired(20);

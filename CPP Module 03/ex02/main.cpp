@@ -10,15 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include"ScavTrap.hpp"
+# include"FragTrap.hpp"
 
 int main ( void )
 {
-	ScavTrap a;
-	ScavTrap b(a);
+	FragTrap a;
+    FragTrap b(a);
 
-	// a.guardGate();
-	a.attack("Nothing");
+	 a.highFivesGuys();
+	a.attack("Ahmed");
 	a.attack("Nothing");
 	b = a;
 	b.attack("Ahmed");

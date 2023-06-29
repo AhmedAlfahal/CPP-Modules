@@ -10,3 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
+
+#include "ScavTrap.hpp"
+
+class FragTrap : public ClapTrap{
+
+    public:
+        FragTrap();
+        FragTrap( std::string name );
+        FragTrap( const FragTrap &aFragTrap );
+        ~FragTrap();
+        FragTrap & operator= ( const FragTrap &aFragTrap );
+        void highFivesGuys( void );
+
+};
+
+#endif
