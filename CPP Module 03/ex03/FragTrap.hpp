@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 16:51:30 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/06/27 16:51:31 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/06/29 23:22:33 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 # define FRAGTRAP_HPP
 
 #include "ScavTrap.hpp"
+#include "ClapTrap.hpp"
 
-class FragTrap : public ClapTrap{
+class FragTrap : virtual public ClapTrap{
 
     public:
         FragTrap();
