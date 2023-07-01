@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 16:12:40 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/06/29 23:48:34 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/07/01 23:01:08 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ ScavTrap::ScavTrap( std::string aName ){
 	AttackDamage = 20;
 }
 
-ScavTrap::ScavTrap( const ScavTrap &aScavTrap ){
+ScavTrap::ScavTrap( const ScavTrap &aScavTrap ) : ClapTrap(aScavTrap) {
 	std::cout << "ScavTrap Copy Constructor Called" << std::endl;
 	*this = aScavTrap;
 }
@@ -47,6 +47,10 @@ ScavTrap & ScavTrap::operator= (const ScavTrap &aScavTrap){
 }
 
 void ScavTrap::guardGate(){
+	if (this->HitPoints <= 0){
+		std::cout << "ScavTrap " << this->name << " is died!! he can not be in Gate Keeper mode" << std::endl;
+		return ;
+	}
 	std::cout << "ScavTrap " << this->name << " is now in Gate Keeper mode." << std::endl;
 }
 
@@ -60,6 +64,6 @@ void ScavTrap::attack(const std::string& target){
         return;
     }
     this->EnergyPoint--;
-    std::cout << this->name << " attacks " << target << ", causing " << this->AttackDamage << " points of damage!" << std::endl;
+    std::cout << "ScavTrap " <<this->name << " attacks " << target << ", causing " << this->AttackDamage << " points of damage!" << std::endl;
     takeDamage(this->AttackDamage);
 }

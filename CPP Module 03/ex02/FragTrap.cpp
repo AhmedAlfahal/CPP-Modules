@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 16:51:23 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/06/27 16:51:24 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/07/01 22:56:23 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ FragTrap::FragTrap( std::string name ){
     this->AttackDamage = 30;
     std::cout << "FragTrap naming Constructor called" << std::endl;
 }
-FragTrap::FragTrap( const FragTrap &aFragTrap ){
-    *this = aFragTrap;
+FragTrap::FragTrap( const FragTrap &aFragTrap ) : ClapTrap(aFragTrap){
     std::cout << "FragTrap Copy Constructor called" << std::endl;
+    *this = aFragTrap;
 }
 FragTrap::~FragTrap(){
     std::cout << "FragTrap destructor called" << std::endl;
@@ -42,5 +42,9 @@ FragTrap & FragTrap::operator= ( const FragTrap &aFragTrap ){
     return (*this);
 }
 void FragTrap::highFivesGuys(void){
+	if (this->HitPoints == 0){
+		std::cout << this->name << " is died he can not high five" << std::endl;
+		return ;
+	}
     std::cout << "Can You High Five me !!!!!" << std::endl;
 }

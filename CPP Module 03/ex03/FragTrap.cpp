@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 16:51:23 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/06/27 16:51:24 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/07/01 19:32:21 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ FragTrap::FragTrap( std::string name ){
     this->AttackDamage = 30;
     std::cout << "FragTrap naming Constructor called" << std::endl;
 }
-FragTrap::FragTrap( const FragTrap &aFragTrap ){
+FragTrap::FragTrap( const FragTrap &aFragTrap ) : ClapTrap(aFragTrap){
     *this = aFragTrap;
     std::cout << "FragTrap Copy Constructor called" << std::endl;
 }

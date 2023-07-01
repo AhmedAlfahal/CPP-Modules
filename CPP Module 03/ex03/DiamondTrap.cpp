@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 20:59:23 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/06/29 23:37:52 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/07/01 19:34:00 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ DiamondTrap::DiamondTrap(){
 	std::cout << "DiamondTrap Defualt Constructor Called" << std::endl;
 }
 
-DiamondTrap::DiamondTrap( const DiamondTrap &aDiamondTrap ){
+DiamondTrap::DiamondTrap( const DiamondTrap &aDiamondTrap ) : ClapTrap(aDiamondTrap), FragTrap(aDiamondTrap), ScavTrap(aDiamondTrap){
 	*this = aDiamondTrap;
 	std::cout << "DiamondTrap Copy Assignment Called" << std::endl;
 }
