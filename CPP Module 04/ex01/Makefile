@@ -6,7 +6,7 @@
 #    By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/01 23:25:46 by aalfahal          #+#    #+#              #
-#    Updated: 2023/07/02 18:03:12 by aalfahal         ###   ########.fr        #
+#    Updated: 2023/07/02 23:02:33 by aalfahal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 
 NAME		=	Animal
 
-SRC			=	main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
+SRC			=	main.cpp Animal.cpp Cat.cpp Dog.cpp Brain.cpp
 
 OBJS		=	$(SRC:.cpp=.o)
 

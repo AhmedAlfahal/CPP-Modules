@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 22:23:10 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/07/02 22:33:53 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/07/02 23:03:00 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,5 @@ Brain & Brain::operator= ( const Brain &aBrain ){
 		return (*this);
 	for (int i = 0; i < 100; i++)
 		this->ideas[i] = aBrain.ideas[i];
+	return (*this);
 }

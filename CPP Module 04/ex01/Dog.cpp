@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 23:27:23 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/07/02 22:56:52 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/07/02 23:05:00 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ Dog & Dog::operator= ( const Dog &aDog ){
 	if (this == &aDog)
 		return (*this);
 	this->type = aDog.type;
+	delete this->brain;
+	this->brain = new Brain(*aDog.brain);
 	return (*this);
 }
 
