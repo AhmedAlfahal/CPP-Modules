@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 23:27:13 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/07/02 19:12:20 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/07/02 22:54:13 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ WrongAnimal::WrongAnimal(){
 
 WrongAnimal::WrongAnimal( const WrongAnimal &WrongaAnimal ){
 	std::cout << "WrongAnimal Copy Constructor" << std::endl;
+	if (this == &WrongaAnimal)
+		return ;
 	*this = WrongaAnimal;
 }
 
@@ -28,6 +30,8 @@ WrongAnimal::~WrongAnimal(){
 
 WrongAnimal & WrongAnimal::operator= ( const WrongAnimal &WrongaAnimal ){
 	std::cout << "WrongAnimal Copy Assignment Constructor" << std::endl;
+	if (this == &WrongaAnimal)
+		return (*this);
 	this->type = WrongaAnimal.type;
 	return (*this);
 }

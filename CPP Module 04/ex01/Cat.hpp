@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 23:27:18 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/07/02 00:07:44 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/07/02 22:42:21 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 # define CAT_HPP
 
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 class Cat : public Animal{
+	private:
+		Brain *brain;
 	public:
 		Cat();
 		Cat( const Cat &aCat );

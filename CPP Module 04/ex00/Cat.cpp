@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 23:27:19 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/07/02 00:20:40 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/07/02 22:52:51 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ Cat::Cat(){
 
 Cat::Cat( const Cat &aCat ) : Animal(aCat){
 	std::cout << "Cat Copy Constructor" << std::endl;
+	if (this == &aCat)
+		return ;
 	*this = aCat;
 }
 
@@ -29,6 +31,8 @@ Cat::~Cat(){
 
 Cat & Cat::operator= ( const Cat &aCat ){
 	std::cout << "Cat Copy Assignment Constructor" << std::endl;
+	if (this == &aCat)
+		return (*this);
 	this->type = aCat.type;
 	return (*this);
 }

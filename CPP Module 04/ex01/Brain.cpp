@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongCat.hpp                                       :+:      :+:    :+:   */
+/*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/01 23:27:18 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/07/02 19:10:33 by aalfahal         ###   ########.fr       */
+/*   Created: 2023/07/02 22:23:10 by aalfahal          #+#    #+#             */
+/*   Updated: 2023/07/02 22:33:53 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGCAT_HPP
-# define WRONGCAT_HPP
+#include "Brain.hpp"
 
-#include "WrongAnimal.hpp"
+Brain::Brain(){
+}
 
-class WrongCat : public WrongAnimal{
-	public:
-		WrongCat();
-		WrongCat( const WrongCat &WrongaCat );
-		~WrongCat();
-		WrongCat & operator= ( const WrongCat &WrongaCat );
-		void makeSound() const;
-};
+Brain::Brain( const Brain &aBrain ){
+	if (this == &aBrain)	
+		return ;
+	*this = aBrain;
+}
 
-#endif
+Brain::~Brain(){
+}
+
+Brain & Brain::operator= ( const Brain &aBrain ){
+	if (this == &aBrain)	
+		return (*this);
+	for (int i = 0; i < 100; i++)
+		this->ideas[i] = aBrain.ideas[i];
+}

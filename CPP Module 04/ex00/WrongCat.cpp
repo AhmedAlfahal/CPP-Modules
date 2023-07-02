@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 23:27:19 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/07/02 18:02:40 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/07/02 22:54:40 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ WrongCat::WrongCat(){
 
 WrongCat::WrongCat( const WrongCat &WrongaCat ) : WrongAnimal(WrongaCat){
 	std::cout << "WrongCat Copy Constructor" << std::endl;
+	if (this == &WrongaCat)
+		return ;
 	*this = WrongaCat;
 }
 
@@ -29,6 +31,8 @@ WrongCat::~WrongCat(){
 
 WrongCat & WrongCat::operator= ( const WrongCat &WrongaCat ){
 	std::cout << "WrongCat Copy Assignment Constructor" << std::endl;
+	if (this == &WrongaCat)
+		return (*this);
 	this->type = WrongaCat.type;
 	return (*this);
 }
