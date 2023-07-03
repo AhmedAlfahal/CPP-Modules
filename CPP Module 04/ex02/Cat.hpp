@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/02 00:00:43 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/07/03 10:11:21 by aalfahal         ###   ########.fr       */
+/*   Created: 2023/07/01 23:27:18 by aalfahal          #+#    #+#             */
+/*   Updated: 2023/07/02 22:42:21 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
-#include "Dog.hpp"
-#include "Cat.hpp"
+#ifndef CAT_HPP
+# define CAT_HPP
 
-int main( void ){
-	const Animal* meta[100];
-	for (int i = 0; i < 100; i++){
-		if (i < 50)
-			meta[i] = new Dog();
-		else
-			meta[i] = new Cat();
-	}
-	for (int i = 0; i < 100; i++){
-		meta[i]->getType();
-		meta[i]->makeSound();
-	}
-	for (int i = 0; i < 100; i++)
-		delete meta[i];
-	Dog *d = new Dog();
-	Dog *k = new Dog(*d);
-	k->makeSound();
-	delete d;
-	delete k;
-	return (0);
-}
+#include "Animal.hpp"
+#include "Brain.hpp"
+
+class Cat : public Animal{
+	private:
+		Brain *brain;
+	public:
+		Cat();
+		Cat( const Cat &aCat );
+		~Cat();
+		Cat & operator= ( const Cat &aCat );
+		void makeSound() const;
+};
+
+#endif
