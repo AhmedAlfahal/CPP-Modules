@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 00:00:43 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/07/03 10:11:21 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/07/03 10:47:28 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int main( void ){
 			meta[i] = new Cat();
 	}
 	for (int i = 0; i < 100; i++){
-		meta[i]->getType();
+		std::cout << meta[i]->getType() << std::endl;
 		meta[i]->makeSound();
 	}
 	for (int i = 0; i < 100; i++)
@@ -33,5 +33,6 @@ int main( void ){
 	k->makeSound();
 	delete d;
 	delete k;
+	// Animal a;
 	return (0);
 }
