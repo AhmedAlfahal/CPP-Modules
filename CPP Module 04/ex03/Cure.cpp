@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
+/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 15:12:28 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/07/05 15:58:32 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/07/05 13:10:37 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,8 @@ Cure & Cure::operator=( const Cure &aCure ){
 
 AMateria* Cure::clone() const {
 	return (new Cure(*this));
+}
+
+void Cure::use(ICharacter& target){
+	std::cout << "* shoots an ice bolt at " << target.type << " *" << std::endl;
 }

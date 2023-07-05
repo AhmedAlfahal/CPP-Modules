@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
+/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 15:12:30 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/07/05 15:58:27 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/07/05 13:11:44 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,8 @@ Ice & Ice::operator=( const Ice &aIce ){
 
 AMateria* Ice::clone() const{
 	return (new Ice(*this));
+}
+
+void Ice::use(ICharacter& target){
+	std::cout << "* heals " << target.type << " wounds *" << std::endl;
 }

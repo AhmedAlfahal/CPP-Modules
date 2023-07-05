@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Ice.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
+/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 15:12:54 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/07/05 15:49:53 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/07/05 13:11:11 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ class Ice : public AMateria{
 		~Ice();
 		Ice & operator=( const Ice &aIce );
 		AMateria* clone() const;
+		void use(ICharacter& target);
 };
 
 #endif
