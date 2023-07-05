@@ -6,7 +6,7 @@
 #    By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/03 10:47:47 by aalfahal          #+#    #+#              #
-#    Updated: 2023/07/03 10:59:15 by aalfahal         ###   ########.fr        #
+#    Updated: 2023/07/05 15:41:07 by aalfahal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 
 NAME		=	Animal
 
-SRC			=	main.cpp 
+SRC			=	main.cpp AMateria.cpp   Ice.cpp Cure.cpp #ICharacter.cpp IMateriaSource.cpp
 
 OBJS		=	$(SRC:.cpp=.o)
 
