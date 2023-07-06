@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   AMateria.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 21:18:47 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/07/05 13:08:02 by kali             ###   ########.fr       */
+/*   Updated: 2023/07/06 22:38:24 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef AMATERIA_HPP
 # define AMATERIA_HPP
+
+#include "ICharacter.hpp"
 #include <iostream>
 
-class AMateria
-{
+class AMateria{
 	protected:
 		std::string type;
 	public:

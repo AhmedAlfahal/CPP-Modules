@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 15:12:28 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/07/05 13:10:37 by kali             ###   ########.fr       */
+/*   Updated: 2023/07/06 23:21:05 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,27 @@ AMateria* Cure::clone() const {
 }
 
 void Cure::use(ICharacter& target){
-	std::cout << "* shoots an ice bolt at " << target.type << " *" << std::endl;
+	std::cout << "* shoots an ice bolt at " << this->type << " *" << std::endl;
+}
+
+std::string const & Cure::getName() const{
+	return (this->getName());
+}
+void Cure::equip(AMateria* m){
+	for (int i = 0; i < 4; i++){
+		if (this->inventory[i] == NULL)
+			this->inventory[i] = m;
+	}
+}
+void Cure::unequip(int idx){
+	for (int i = 0; i < 4; i++){
+		if (i == idx)
+			this->inventory[i] = NULL;
+	}
+}
+void Cure::use(int idx, ICharacter& target){
+	for (int i = 0; i < 4; i++){
+		if (i == idx)
+			AMateria::use(target);
+	}
 }

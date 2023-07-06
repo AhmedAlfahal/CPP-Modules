@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 21:18:39 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/07/05 13:08:00 by kali             ###   ########.fr       */
+/*   Updated: 2023/07/06 18:11:38 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,3 @@ AMateria & AMateria::operator=( const AMateria &aAMateria){
 std::string const & AMateria::getType() const{
 	return (this->type);
 }
-
-// void AMateria::use(ICharacter& target){
-	
-// }
-
-
