@@ -1,28 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cure.hpp                                           :+:      :+:    :+:   */
+/*   IMateriaSource.cpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/05 15:12:57 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/07/07 22:40:11 by aalfahal         ###   ########.fr       */
+/*   Created: 2023/07/07 22:54:14 by aalfahal          #+#    #+#             */
+/*   Updated: 2023/07/07 22:55:00 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CURE_HPP
-# define CURE_HPP
+#include "IMateriaSource.hpp"
 
-#include "AMateria.hpp"
-
-class Cure : public AMateria{
-	public:
-		Cure();
-		Cure( const Cure &aCure);
-		~Cure();
-		Cure & operator=( const Cure &aCure );
-		AMateria* clone() const;
-		void use(ICharacter& target);
-};
-
-#endif
+IMateriaSource::IMateriaSource(){}

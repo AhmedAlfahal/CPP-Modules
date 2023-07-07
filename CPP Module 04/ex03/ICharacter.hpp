@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 13:19:23 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/07/06 23:25:30 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/07/07 22:22:41 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
 class AMateria;
 
 class ICharacter{
-	private:
-		std::string name;
 	protected:
+		std::string name;
 		static AMateria* inventory[4];
     public:
+		ICharacter();
 		ICharacter( std::string aName);
 		ICharacter( const ICharacter &aICharacter);
 		ICharacter & operator=( const ICharacter &aICharacter );
