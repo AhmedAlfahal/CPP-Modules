@@ -6,7 +6,7 @@
 #    By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/03 10:47:47 by aalfahal          #+#    #+#              #
-#    Updated: 2023/07/07 22:52:54 by aalfahal         ###   ########.fr        #
+#    Updated: 2023/07/09 20:45:53 by aalfahal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 
 NAME		=	Materia
 
-SRC			=	main.cpp AMateria.cpp  Ice.cpp Cure.cpp ICharacter.cpp IMateriaSource.cpp
+SRC			=	main.cpp AMateria.cpp Ice.cpp Cure.cpp Charactar.cpp MateriaSource.cpp
 
 OBJS		=	$(SRC:.cpp=.o)
 

@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 01:11:19 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/07/09 03:01:29 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/07/09 20:26:05 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@ Character::Character(){
 
 Character::Character( std::string const & aName ){
 	this->name = aName;
+	for (int i = 0; i < 4; i++){
+		this->inventory[i] = new Cure();
+		this->inventory[i] = NULL;
+	}
 }
 
 Character::Character( const Character &aCharacter ){
@@ -76,6 +80,6 @@ void Character::unequip( int idx ){
 void Character::use( int idx, ICharacter& target ){
 	for (int i = 0; i < 4; i++){
 		if (idx == i)
-			target.include
+			this->inventory[i]->use(target);
 	}
 }

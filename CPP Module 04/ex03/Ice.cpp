@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 00:55:53 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/07/09 01:06:20 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/07/09 20:44:44 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ Ice & Ice::operator= ( const Ice &aIce ){
 }
 
 void Ice::use(ICharacter& target){
+	AMateria::use(target);
 	std::cout << "* shoots an ice bolt at ice *" << std::endl;
 }
 
