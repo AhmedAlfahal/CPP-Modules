@@ -6,12 +6,13 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 01:05:33 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/07/11 19:11:21 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/07/12 00:20:35 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cure.hpp"
 #include "AMateria.hpp"
+#include "Charactar.hpp"
 
 Cure::Cure() : AMateria(){
 	this->type = "cure";
@@ -39,7 +40,7 @@ Cure & Cure::operator= ( const Cure &aCure ){
 
 void Cure::use(ICharacter& target){
 	AMateria::use(target);
-	std::cout << "* heals cure’s wounds *" << std::endl;
+	std::cout << "* heals " << target.getName() << "’s wounds *" << std::endl;
 }
 
 AMateria* Cure::clone() const {
