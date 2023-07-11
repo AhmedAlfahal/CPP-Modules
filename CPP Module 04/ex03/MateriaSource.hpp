@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 20:26:55 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/07/09 20:43:29 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/07/11 20:13:52 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class IMateriaSource
 class MateriaSource : public IMateriaSource{
 	private:
 		std::string name;
-		static AMateria *memory[4];
+		AMateria *memory[4];
 	public:
 		MateriaSource();
 		MateriaSource( const std::string name );

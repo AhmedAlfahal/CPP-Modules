@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 01:03:17 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/07/09 01:31:42 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/07/11 19:10:46 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 class Cure : public AMateria{
 	public:
 		Cure();	
+		Cure( const std::string aName );
 		Cure( const Cure &aCure );
 		~Cure();
 		Cure & operator= ( const Cure &aCure );

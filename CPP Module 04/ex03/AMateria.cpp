@@ -6,11 +6,12 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 22:55:11 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/07/09 21:32:33 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/07/11 20:16:26 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
+#include "Charactar.hpp"
 
 AMateria::AMateria(){
 	this->type = "Defualt";
@@ -42,5 +43,4 @@ std::string const & AMateria::getType() const{
 
 void AMateria::use( ICharacter& target ){
 	(void)target;
-	std::cout << "inside Amateria use" << std::endl;
 }

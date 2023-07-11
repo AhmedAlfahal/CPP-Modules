@@ -6,15 +6,20 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 20:26:52 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/07/09 20:43:13 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/07/11 20:51:28 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MateriaSource.hpp"
 #include "AMateria.hpp"
+#include "Ice.hpp"
+#include "Cure.hpp"
 
 MateriaSource::MateriaSource(){
 	this->name = "Defualt";
+	for (int i = 0; i < 4; i++){
+		this->memory[i] = new Ice("null");
+	}
 }
 
 MateriaSource::MateriaSource( const std::string name ){
@@ -28,7 +33,9 @@ MateriaSource::MateriaSource( const MateriaSource &aMateriaSource ){
 }
 
 MateriaSource::~MateriaSource(){
-	
+	for (int i = 0; i < 4; i++){
+		delete this->memory[i];
+	}
 }
 
 MateriaSource & MateriaSource::operator= ( const MateriaSource &aMateriaSource ){
@@ -40,13 +47,19 @@ MateriaSource & MateriaSource::operator= ( const MateriaSource &aMateriaSource )
 }
 
 void MateriaSource::learnMateria(AMateria*){
-	std::cout << "inside learn materia" << std::endl;
+	for (int i = 0; i < 4; i++){
+		if (this->memory[i]->getType() == "null"){
+			delete this->memory[i];
+			this->memory[i] = new Cure("a");
+		}
+	}
 }
 
-AMateria* MateriaSource::createMateria(std::string const & type){
-	std::cout << "inside create materia" << std::endl;
+AMateria* MateriaSource::createMateria( std::string const & type ){
 	if (type == "ice")
 		return (new Ice());
-	else
+	else if (type == "cure")
 	 	return (new Cure());
+	else
+		return (NULL);
 }

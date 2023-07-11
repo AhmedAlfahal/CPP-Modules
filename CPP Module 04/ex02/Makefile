@@ -6,13 +6,13 @@
 #    By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/01 23:25:46 by aalfahal          #+#    #+#              #
-#    Updated: 2023/07/03 10:10:57 by aalfahal         ###   ########.fr        #
+#    Updated: 2023/07/11 20:32:43 by aalfahal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX			=	c++
 
-CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
+CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98 -g3
 
 NAME		=	Animal
 

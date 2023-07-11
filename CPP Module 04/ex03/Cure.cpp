@@ -6,17 +6,22 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 01:05:33 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/07/09 20:45:08 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/07/11 19:11:21 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cure.hpp"
+#include "AMateria.hpp"
 
-Cure::Cure(){
+Cure::Cure() : AMateria(){
 	this->type = "cure";
 }
 
-Cure::Cure( const Cure &aCure ){
+Cure::Cure( const std::string aName ){
+	this->type = aName;
+}
+
+Cure::Cure( const Cure &aCure ) : AMateria(aCure){
 	if (this == &aCure)
 		return ;
 	*this = aCure;	

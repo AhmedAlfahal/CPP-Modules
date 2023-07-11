@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 01:11:07 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/07/09 03:01:15 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/07/11 20:21:36 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ class Character : public ICharacter{
 		Character();
 		Character( std::string const & aName );
 		Character( const Character &aCharactar );
-		~Character();
+		// ~Character();
 		Character & operator= ( const Character &aCharactar );
 		std::string const & getName() const;
 		void equip( AMateria* m );

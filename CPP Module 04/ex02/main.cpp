@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 00:00:43 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/07/03 10:47:28 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/07/11 20:43:01 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,5 @@ int main( void ){
 	k->makeSound();
 	delete d;
 	delete k;
-	// Animal a;
 	return (0);
 }

@@ -6,24 +6,28 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 00:55:53 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/07/09 20:44:44 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/07/11 19:11:36 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Ice.hpp"
+#include "AMateria.hpp"
 
-Ice::Ice(){
+Ice::Ice() : AMateria(){
 	this->type = "ice";
 }
 
-Ice::Ice( const Ice &aIce ){
+Ice::Ice( const std::string aName ){
+	this->type = aName;
+}
+
+Ice::Ice( const Ice &aIce ) : AMateria(aIce){
 	if (this == &aIce)
 		return ;
 	*this = aIce;	
 }
 
 Ice::~Ice(){
-	
 }
 
 Ice & Ice::operator= ( const Ice &aIce ){
