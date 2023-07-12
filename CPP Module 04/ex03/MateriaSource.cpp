@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 20:26:52 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/07/12 00:38:56 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/07/12 16:46:33 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,9 @@ MateriaSource::MateriaSource( const MateriaSource &aMateriaSource ){
 		return ;
 	this->name = aMateriaSource.name;
 	for (int i = 0; i < 4; i++){
-		if (this->memory[i] == NULL)
+		if (aMateriaSource.memory[i]){
 			this->memory[i] = aMateriaSource.memory[i]->clone();
+		}
 		else
 		 	this->memory[i] = NULL;
 	}
@@ -53,8 +54,10 @@ MateriaSource & MateriaSource::operator= ( const MateriaSource &aMateriaSource )
 		return (*this);
 	this->name = aMateriaSource.name;
 	for (int i = 0; i < 4; i++){
-		if(aMateriaSource.memory[i])
+		if(aMateriaSource.memory[i]){
+			delete this->memory[i];
 			this->memory[i] = aMateriaSource.memory[i]->clone();
+		}
 		else
 		 	this->memory[i] = NULL;
 	}
@@ -71,8 +74,6 @@ void MateriaSource::learnMateria(AMateria* m){
 }
 
 AMateria* MateriaSource::createMateria( std::string const & type ){
-	if (type == "")
-		return (NULL);
 	if (type == "ice")
 		return (new Ice());
 	else if (type == "cure")
