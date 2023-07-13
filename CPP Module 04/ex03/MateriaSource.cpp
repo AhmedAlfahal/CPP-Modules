@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 20:26:52 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/07/12 16:46:33 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/07/13 15:57:41 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,14 @@ MateriaSource & MateriaSource::operator= ( const MateriaSource &aMateriaSource )
 		return (*this);
 	this->name = aMateriaSource.name;
 	for (int i = 0; i < 4; i++){
-		if(aMateriaSource.memory[i]){
+		if (this->memory[i])
 			delete this->memory[i];
+		this->memory[i] = NULL;
+	}
+	for (int i = 0; i < 4; i++){
+		std::cout << "inside clone" << std::endl;
+		if(aMateriaSource.memory[i])
+		{
 			this->memory[i] = aMateriaSource.memory[i]->clone();
 		}
 		else

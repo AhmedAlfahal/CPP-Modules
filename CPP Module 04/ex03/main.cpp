@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 20:43:37 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/07/12 16:46:25 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/07/13 15:57:07 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,12 @@ int main()
 	
 	IMateriaSource* src = new MateriaSource();
 	IMateriaSource* srcc = new MateriaSource();
-	// srcc = src;
-	srcc->createMateria("ice");
-	src->createMateria("ice");
-	delete srcc;
-	delete src;
+	src->learnMateria(src->createMateria("ice"));
+	src->learnMateria(src->createMateria("ice"));
+	srcc = src;
+	// srcc->learnMateria(new Ice());
+	// delete srcc;
+	// delete src;
 
 	return 0;
 }
