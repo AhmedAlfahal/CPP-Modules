@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 00:00:43 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/07/11 20:43:01 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/07/13 21:12:37 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ int main( void ){
 	for (int i = 0; i < 100; i++)
 		delete meta[i];
 	Dog *d = new Dog();
-	Dog *k = new Dog(*d);
+	Dog *k = new Dog();
+	*k = *d;
 	k->makeSound();
 	delete d;
 	delete k;
