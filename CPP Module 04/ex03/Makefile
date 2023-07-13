@@ -6,13 +6,13 @@
 #    By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/03 10:47:47 by aalfahal          #+#    #+#              #
-#    Updated: 2023/07/13 15:57:15 by aalfahal         ###   ########.fr        #
+#    Updated: 2023/07/13 20:57:45 by aalfahal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX			=	c++
 
-CXXFLAGS	=	#-Wall -Werror -Wextra -std=c++98 -g3 #-fsanitize=address 
+CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 
 NAME		=	Materia
 

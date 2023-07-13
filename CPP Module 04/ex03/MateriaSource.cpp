@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 20:26:52 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/07/13 15:57:41 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/07/13 20:51:07 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,16 +59,12 @@ MateriaSource & MateriaSource::operator= ( const MateriaSource &aMateriaSource )
 		this->memory[i] = NULL;
 	}
 	for (int i = 0; i < 4; i++){
-		std::cout << "inside clone" << std::endl;
 		if(aMateriaSource.memory[i])
-		{
 			this->memory[i] = aMateriaSource.memory[i]->clone();
-		}
 		else
 		 	this->memory[i] = NULL;
 	}
 	return (*this);
-	
 }
 
 void MateriaSource::learnMateria(AMateria* m){
