@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 20:26:55 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/07/13 20:40:28 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/07/13 23:40:33 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,7 @@
 #include "AMateria.hpp"
 #include "Ice.hpp"
 #include "Cure.hpp"
-
-class IMateriaSource
-{
-	public:
-		virtual ~IMateriaSource() {}
-		virtual void learnMateria(AMateria*) = 0;
-		virtual AMateria* createMateria(std::string const & type) = 0;
-};
+#include "IMateriaSource.hpp"
 
 class MateriaSource : public IMateriaSource{
 	private:
