@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 02:36:38 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/08/06 02:52:37 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/08/10 14:48:59 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 int main ( void )
 {
-	Bureaucrat a("Ahmed", 3);
+	Bureaucrat a("Ahmed", 160);
 	std::cout << a;
 }

@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 02:22:48 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/08/06 02:53:11 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/08/10 18:06:54 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@ Bureaucrat::Bureaucrat() : name("Bureaucrat"){
 	this->grade = 2;	
 }
 
-Bureaucrat::Bureaucrat( std::string aName, int aGrade ):name(aName){
+Bureaucrat::Bureaucrat( std::string aName, int aGrade ) : name(aName){
 	this->grade = aGrade;
 	try {
 		if (aGrade > 150)
-			throw (GradeTooLowException);
-		else
+			throw ("Bureaucrat::GradeTooLowException");
+		else if (aGrade < 0)
 			throw ("Bureaucrat::GradeTooHighException");
 	}
-	catch ( std::exception & e ) {
+	catch ( std::string & e ) {
 		std::cout << e << std::endl;
 	}
 }
