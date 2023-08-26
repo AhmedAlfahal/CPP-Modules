@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 02:22:48 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/08/27 02:08:24 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/08/21 01:22:48 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 Bureaucrat::Bureaucrat() : name("Bureaucrat"){
 	this->grade = 2;
-	this->err = 0;
-	this->isAlloc = 0;
+	this->err = 0;	
 }
 
 const char *GradeTooHighException::what() const throw(){
@@ -24,21 +23,6 @@ const char *GradeTooHighException::what() const throw(){
 
 const char *GradeTooLowException::what() const throw(){
 	return ("Bureaucrat::GradeTooLowException");
-}
-
-Bureaucrat & Bureaucrat::operator= ( const Bureaucrat &aBureaucrat ){
-	if (this == &aBureaucrat)
-		return (*this);
-	Bureaucrat *b = new Bureaucrat(aBureaucrat.getName(), aBureaucrat.getGrade());
-	b->isAlloc = 1;
-	this->~Bureaucrat();
-	return (*b);
-}
-
-Bureaucrat::Bureaucrat( const Bureaucrat & aBureaucrat){
-	if (this == &aBureaucrat)
-		return ;
-	Bureaucrat(aBureaucrat.getName(), aBureaucrat.getGrade());
 }
 
 Bureaucrat::Bureaucrat( std::string aName, int aGrade ) : name(aName){
@@ -57,8 +41,6 @@ Bureaucrat::Bureaucrat( std::string aName, int aGrade ) : name(aName){
 }
 
 Bureaucrat::~Bureaucrat(){
-	if (isAlloc == 1)
-		delete this;
 }
 
 int	Bureaucrat::isERR() const {

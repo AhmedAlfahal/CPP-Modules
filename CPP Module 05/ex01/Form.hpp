@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/06 02:36:38 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/08/27 02:09:30 by aalfahal         ###   ########.fr       */
+/*   Created: 2023/08/27 01:49:04 by aalfahal          #+#    #+#             */
+/*   Updated: 2023/08/27 01:57:07 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
-#include <exception>
-#include <iostream>
+#ifndef FORM_HPP
+# define FORM_HPP
 
-int main ( void )
-{
-	Bureaucrat a("Ahmed", 10);
-	Bureaucrat aa(a);
-	Bureaucrat aaa("Ahmed", 4);
-	std::cout << a << std::endl;
-	std::cout << aa << std::endl;
-	std::cout << aaa << std::endl;
-	
-}
+#include<iostream>
+#include "Bureaucrat.hpp"
+
+class Form{
+
+	private:
+		const std::string name;
+		bool isSigned;
+		const int signGrade;
+		const int execGrade;
+	public:
+		Form();
+		Form( std::string aName, int aGrade );
+		~Form();
+};
+#endif
