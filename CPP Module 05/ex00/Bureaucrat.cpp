@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 02:22:48 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/08/27 02:08:24 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/08/27 22:31:57 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 Bureaucrat::Bureaucrat() : name("Bureaucrat"){
 	this->grade = 2;
 	this->err = 0;
-	this->isAlloc = 0;
 }
 
 const char *GradeTooHighException::what() const throw(){
@@ -29,21 +28,35 @@ const char *GradeTooLowException::what() const throw(){
 Bureaucrat & Bureaucrat::operator= ( const Bureaucrat &aBureaucrat ){
 	if (this == &aBureaucrat)
 		return (*this);
-	Bureaucrat *b = new Bureaucrat(aBureaucrat.getName(), aBureaucrat.getGrade());
-	b->isAlloc = 1;
-	this->~Bureaucrat();
-	return (*b);
+	this->grade = aBureaucrat.getGrade();
+	if (this->name != aBureaucrat.getName())
+	{
+		std::string* tmp = const_cast <std::string *> (&this->name);
+		*tmp = aBureaucrat.getName();
+	}
+	this->err = 0;
+	try {
+		if (this->grade > 150)
+			throw GradeTooLowException();
+		else if (this->grade < 0)
+			throw GradeTooHighException();
+	}
+	catch ( std::exception & e ) {
+		std::cout << e.what() << std::endl;
+		this->err = 1;
+	}
+	return (*this);
 }
 
-Bureaucrat::Bureaucrat( const Bureaucrat & aBureaucrat){
+Bureaucrat::Bureaucrat( const Bureaucrat & aBureaucrat) : name(aBureaucrat.getName()){
 	if (this == &aBureaucrat)
 		return ;
-	Bureaucrat(aBureaucrat.getName(), aBureaucrat.getGrade());
+	*this = aBureaucrat;
 }
 
 Bureaucrat::Bureaucrat( std::string aName, int aGrade ) : name(aName){
 	this->grade = aGrade;
-	this->err = 0;	
+	this->err = 0;
 	try {
 		if (this->grade > 150)
 			throw GradeTooLowException();
@@ -57,11 +70,9 @@ Bureaucrat::Bureaucrat( std::string aName, int aGrade ) : name(aName){
 }
 
 Bureaucrat::~Bureaucrat(){
-	if (isAlloc == 1)
-		delete this;
 }
 
-int	Bureaucrat::isERR() const {
+int	Bureaucrat::getError() const {
 	return (this->err);	
 }
 
@@ -74,7 +85,7 @@ int Bureaucrat::getGrade() const {
 }
 
 std::ostream & operator<< ( std::ostream &out, const Bureaucrat &aBureaucrat ){
-	if (aBureaucrat.isERR())
+	if (aBureaucrat.getError())
 		return (out);
 	else
 		out << aBureaucrat.getName() << " bureaucrat grade " << aBureaucrat.getGrade();
