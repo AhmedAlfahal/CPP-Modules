@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 23:53:38 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/08/27 22:36:41 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/09/01 21:47:22 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 #include <exception>
 #include <iostream>
-#include <exception>
 
 class Bureaucrat{
 	private:
@@ -28,9 +27,9 @@ class Bureaucrat{
 		Bureaucrat( std::string aName, int aGrade );
 		Bureaucrat & operator= ( const Bureaucrat &aBureaucrat );
 		~Bureaucrat();
-		const std::string getName() const ;
-		const int getError() const;
-		const int getGrade() const ;
+		std::string getName() const ;
+		int getError() const;
+		int getGrade() const ;
 
 	class GradeTooHighException : public std::exception
 	{

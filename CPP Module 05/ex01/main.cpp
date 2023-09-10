@@ -6,20 +6,19 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 02:36:38 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/08/27 22:20:31 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/09/01 22:47:34 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include <exception>
-#include <iostream>
+#include "Form.hpp"
 
 int main ( void )
 {
-	Bureaucrat a("fdsff", 1110);
-	Bureaucrat aa;
-	aa = a;
-	Bureaucrat aaa("ds", 4);
+	Form a("fdsff", 11);
+	Form aa;
+	aa = Form ("Ahmed", 103);
+	Form aaa("ds", 40);
 	std::cout << a << std::endl;
 	std::cout << aa << std::endl;
 	std::cout << aaa << std::endl;

@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 02:22:48 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/08/27 22:39:58 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/09/01 21:47:35 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,15 +72,15 @@ Bureaucrat::Bureaucrat( std::string aName, int aGrade ) : name(aName){
 Bureaucrat::~Bureaucrat(){
 }
 
-const int	Bureaucrat::getError() const {
+int	Bureaucrat::getError() const {
 	return (this->err);	
 }
 
-const std::string Bureaucrat::getName() const {
+std::string Bureaucrat::getName() const {
 	return (this->name);
 }
 
-const int Bureaucrat::getGrade() const {
+int Bureaucrat::getGrade() const {
 	return (this->grade);
 }
 

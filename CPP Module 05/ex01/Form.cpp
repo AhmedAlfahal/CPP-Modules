@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 01:48:57 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/08/27 22:49:07 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/09/02 20:03:50 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ Form::Form() : name("Default"), signGrade(0), execGrade(0){
 	this->isSigned = false;
 }
 
-Form::Form( std::string aName, int aGrade ) : name(aName), signGrade(0), execGrade(0){
+Form::Form( std::string aName, int aGrade ) : name(aName), signGrade(aGrade), execGrade(0){
 	this->isSigned = false;
+	this->signedBurru = "NONE";
+	this->err = 0;
 	try {
 		if (this->getSignGrade() > 150)
 			throw GradeTooLowException();
@@ -34,6 +36,7 @@ Form::Form( std::string aName, int aGrade ) : name(aName), signGrade(0), execGra
 	}
 	catch ( std::exception & e ) {
 		std::cout << e.what() << std::endl;
+		err = 1;
 	}
 }
 
@@ -46,6 +49,7 @@ Form::Form( const Form & aForm ) : name(aForm.getFormName()), signGrade(aForm.ge
 Form & Form::operator= ( const Form & aForm ){
 	if (this == &aForm)
 		return (*this);
+	this->signedBurru = "NONE";
 	if (this->name != aForm.getFormName())
 	{
 		std::string* tmp = const_cast <std::string *> (&this->name);
@@ -70,6 +74,7 @@ Form & Form::operator= ( const Form & aForm ){
 	}
 	catch ( std::exception & e ) {
 		std::cout << e.what() << std::endl;
+		err = 1;
 	}
 	return (*this);
 }
@@ -77,19 +82,39 @@ Form & Form::operator= ( const Form & aForm ){
 Form::~Form(){
 }
 
-const std::string Form::getFormName() const {
+std::string Form::getFormName() const {
 	return (this->name);
 }
 
-const bool Form::getIsSigned() const {
+std::string Form::getSignedBurru() const {
+	return (this->signedBurru);
+}
+
+bool Form::getIsSigned() const {
 	return (this->isSigned);
 }
 
-const int Form::getSignGrade() const {
+int Form::getSignGrade() const {
 	return (this->signGrade);
 }
 
-const int Form::getExecGrade() const {
+int Form::getExecGrade() const {
 	return (this->execGrade);
 }
 
+int Form::getError() const {
+	return (this->err);
+}
+
+void Form::signForm() const {
+	if (this->getIsSigned())
+		std::cout << this->getSignedBurru() << " Signed " << this->getFormName() << std::endl;
+}
+
+std::ostream & operator<< ( std::ostream &out, const Form &aForm ){
+	if (aForm.getError())
+		return (out);
+	else
+		out << aForm.getFormName() << " Form grade " << aForm.getSignGrade();
+	return (out);
+}
