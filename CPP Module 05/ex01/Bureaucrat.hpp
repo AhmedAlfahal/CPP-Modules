@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 23:53:38 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/09/01 21:47:22 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/12/09 00:16:03 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <exception>
 #include <iostream>
+#include <exception>
 
 class Bureaucrat{
 	private:
@@ -29,21 +30,22 @@ class Bureaucrat{
 		~Bureaucrat();
 		std::string getName() const ;
 		int getError() const;
+		void incrementGrade();
+		void decrementGrade();
 		int getGrade() const ;
 
-	class GradeTooHighException : public std::exception
-	{
-		public:
-			virtual const char* what() const throw();
-	};
-
-	class GradeTooLowException : public std::exception
-	{
-		public:
-			virtual const char* what() const throw();
-	};
+};
+class GradeTooHighException : public std::exception
+{
+	public:
+		virtual const char* what() const throw();
 };
 
+class GradeTooLowException : public std::exception
+{
+	public:
+		virtual const char* what() const throw();
+};
 
 std::ostream & operator<< ( std::ostream &out, const Bureaucrat &aBureaucrat );
 
