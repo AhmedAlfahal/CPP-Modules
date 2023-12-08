@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 01:48:57 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/09/02 20:03:50 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/12/09 00:39:18 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ Form::Form( std::string aName, int aGrade ) : name(aName), signGrade(aGrade), ex
 	try {
 		if (this->getSignGrade() > 150)
 			throw GradeTooLowException();
-		else if (this->getSignGrade() < 0)
+		else if (this->getSignGrade() < 1)
 			throw GradeTooHighException();
 	}
 	catch ( std::exception & e ) {
@@ -69,7 +69,7 @@ Form & Form::operator= ( const Form & aForm ){
 	try {
 		if (this->getSignGrade() > 150)
 			throw GradeTooLowException();
-		else if (this->getSignGrade() < 0)
+		else if (this->getSignGrade() < 1)
 			throw GradeTooHighException();
 	}
 	catch ( std::exception & e ) {
@@ -115,6 +115,13 @@ std::ostream & operator<< ( std::ostream &out, const Form &aForm ){
 	if (aForm.getError())
 		return (out);
 	else
+	{
 		out << aForm.getFormName() << " Form grade " << aForm.getSignGrade();
+		if (aForm.getIsSigned() == 1)
+			out << " it is signed ";
+		else if (aForm.getIsSigned() == 0)
+			out << " it is not signed ";
+		if (aForm.)
+	}
 	return (out);
 }
