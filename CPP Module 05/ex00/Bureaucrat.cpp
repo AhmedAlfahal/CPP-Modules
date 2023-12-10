@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 02:22:48 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/12/09 00:31:08 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/12/09 00:30:58 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Bureaucrat::Bureaucrat() : name("Bureaucrat"){
 	this->grade = 2;
-	this->err = 0;
+	this->error = 0;
 }
 
 const char *GradeTooHighException::what() const throw(){
@@ -34,7 +34,7 @@ Bureaucrat & Bureaucrat::operator= ( const Bureaucrat &aBureaucrat ){
 		std::string* tmp = const_cast <std::string *> (&this->name);
 		*tmp = aBureaucrat.getName();
 	}
-	this->err = 0;
+	this->error = 0;
 	try {
 		if (this->grade > 150)
 			throw GradeTooLowException();
@@ -43,7 +43,7 @@ Bureaucrat & Bureaucrat::operator= ( const Bureaucrat &aBureaucrat ){
 	}
 	catch ( std::exception & e ) {
 		std::cout << e.what() << std::endl;
-		this->err = 1;
+		this->error = 1;
 	}
 	return (*this);
 }
@@ -56,7 +56,7 @@ Bureaucrat::Bureaucrat( const Bureaucrat & aBureaucrat) : name(aBureaucrat.getNa
 
 Bureaucrat::Bureaucrat( std::string aName, int aGrade ) : name(aName){
 	this->grade = aGrade;
-	this->err = 0;
+	this->error = 0;
 	try {
 		if (this->grade > 150)
 			throw GradeTooLowException();
@@ -65,7 +65,7 @@ Bureaucrat::Bureaucrat( std::string aName, int aGrade ) : name(aName){
 	}
 	catch ( std::exception & e ) {
 		std::cout << e.what() << std::endl;
-		this->err = 1;
+		this->error = 1;
 	}
 }
 
@@ -73,7 +73,7 @@ Bureaucrat::~Bureaucrat(){
 }
 
 int	Bureaucrat::getError() const {
-	return (this->err);	
+	return (this->error);	
 }
 
 std::string Bureaucrat::getName() const {
@@ -102,7 +102,7 @@ void Bureaucrat::incrementGrade(){
 	}
 	catch ( std::exception & e ) {
 		std::cout << e.what() << std::endl;
-		this->err = 1;
+		this->error = 1;
 	}
 }
 
@@ -116,7 +116,7 @@ void Bureaucrat::decrementGrade(){
 	}
 	catch ( std::exception & e ) {
 		std::cout << e.what() << std::endl;
-		this->err = 1;
+		this->error = 1;
 	}
 }
 
