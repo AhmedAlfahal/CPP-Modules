@@ -15,12 +15,8 @@
 
 int main ( void )
 {
-	Form a("fdsff", 11);
-	Form aa;
-	aa = Form ("Ahmed", 103);
-	Form aaa("ds", 40);
+	Form a("Ahmed", 150, 01);	
+	// Form aa(a);
+	// aa = a;
 	std::cout << a << std::endl;
-	std::cout << aa << std::endl;
-	std::cout << aaa << std::endl;
-	
 }

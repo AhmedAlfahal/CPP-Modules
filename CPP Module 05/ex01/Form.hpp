@@ -13,40 +13,41 @@
 #ifndef FORM_HPP
 # define FORM_HPP
 
+#include <iostream>
 #include "Bureaucrat.hpp"
 
 class Form{
 
 	private:
 		const std::string name;
-		std::string signedBurru;
+		std::string signedBureaucrat;
 		bool isSigned;
 		const int signGrade;
 		const int execGrade;
-		int err;
+		int error;
 	public:
 		Form();
-		Form( std::string aName, int aGrade );
+		Form( std::string aName, int reqSign, int reqExec);
 		Form( const Form & aForm );
 		Form & operator= ( const Form & aForm );
 		~Form();
 		std::string getFormName() const ;
 		bool getIsSigned() const ;
-		void signForm() const ;
+		void beSigned(Bureaucrat aBureaucrat) const ;
 		int getSignGrade() const ;
 		int getExecGrade() const ;
 		int getError() const;
-		std::string getSignedBurru() const ;
+		std::string getSignedBureaucrat() const ;
 	class GradeTooHighException : public std::exception
 	{
 		public:
-			virtual const char* what() const throw();
+			const char* what() const throw();
 	};
 
 	class GradeTooLowException : public std::exception
 	{
 		public:
-			virtual const char* what() const throw();
+			const char* what() const throw();
 	};
 };
 
