@@ -19,4 +19,5 @@ int main ( void )
 	// Form aa(a);
 	// aa = a;
 	std::cout << a << std::endl;
+	// a.beSigned(Bureaucrat aBureaucrat)
 }

@@ -124,7 +124,7 @@ std::ostream & operator<< ( std::ostream &out, const Form &aForm ){
 	return (out);
 }
 
-void Form::beSigned(Bureaucrat aBureaucrat) const {
+void Form::beSigned(Bureaucrat aBureaucrat){
 	try {
 		if (this->getSignGrade() > 150 - aBureaucrat.getGrade())
 			throw (GradeTooLowException());
