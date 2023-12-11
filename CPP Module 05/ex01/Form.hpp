@@ -13,14 +13,14 @@
 #ifndef FORM_HPP
 # define FORM_HPP
 
-#include <iostream>
-#include "Bureaucrat.hpp"
+#include "Form.h"
 
 class Form{
 
 	private:
 		const std::string name;
 		std::string signedBureaucrat;
+		std::string signedBureaucratName;
 		bool isSigned;
 		const int signGrade;
 		const int execGrade;
@@ -31,13 +31,14 @@ class Form{
 		Form( const Form & aForm );
 		Form & operator= ( const Form & aForm );
 		~Form();
-		std::string getFormName() const ;
-		bool getIsSigned() const ;
-		void beSigned(Bureaucrat aBureaucrat) ;
-		int getSignGrade() const ;
-		int getExecGrade() const ;
-		int getError() const;
-		std::string getSignedBureaucrat() const ;
+		int				getSignGrade() const ;
+		int				getExecGrade() const ;
+		int				getError() const;
+		bool			getIsSigned() const ;
+		void			beSigned( Bureaucrat & aBureaucrat ) ;
+		std::string		getSignedBureaucrat() const ;
+		std::string		getSignedBureaucratName() const ;
+		std::string		getFormName() const ;
 	class GradeTooHighException : public std::exception
 	{
 		public:

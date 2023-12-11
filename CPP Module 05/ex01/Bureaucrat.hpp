@@ -13,9 +13,7 @@
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 
-#include <exception>
-#include <iostream>
-#include <exception>
+#include "Form.h"
 
 class Bureaucrat{
 	private:
@@ -29,10 +27,11 @@ class Bureaucrat{
 		Bureaucrat & operator= ( const Bureaucrat &aBureaucrat );
 		~Bureaucrat();
 		std::string getName() const ;
-		int	getError() const ;
-		void incrementGrade();
-		void decrementGrade();
-		int getGrade() const ;
+		int		getError() const ;
+		void	incrementGrade() ;
+		void	decrementGrade() ;
+		void	signForm( const Form & aForm );
+		int		getGrade() const ;
 
 };
 class GradeTooHighException : public std::exception

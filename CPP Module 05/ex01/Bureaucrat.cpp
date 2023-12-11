@@ -120,3 +120,7 @@ void Bureaucrat::decrementGrade(){
 	}
 }
 
+void	Bureaucrat::signForm( const Form & aForm ) {
+	if (this->name != aForm.getSignedBureaucratName())
+		return ;
+}
