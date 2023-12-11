@@ -13,8 +13,9 @@
 #ifndef FORM_HPP
 # define FORM_HPP
 
-#include "Form.h"
+#include <iostream>
 
+class Bureaucrat;
 class Form{
 
 	private:

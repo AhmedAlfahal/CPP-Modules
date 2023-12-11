@@ -121,6 +121,8 @@ void Bureaucrat::decrementGrade(){
 }
 
 void	Bureaucrat::signForm( const Form & aForm ) {
-	if (this->name != aForm.getSignedBureaucratName())
-		return ;
+	if ("he did had the chance!!!!!" == aForm.getSignedBureaucrat())
+		std::cout << this->name << " couldn’t sign " << aForm.getFormName() + " " + aForm.getSignedBureaucrat() << std::endl;
+	else
+		std::cout << aForm.getSignedBureaucrat() << std::endl;
 }

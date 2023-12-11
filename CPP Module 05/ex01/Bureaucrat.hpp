@@ -13,7 +13,8 @@
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 
-#include "Form.h"
+#include "Form.hpp"
+#include <iostream>
 
 class Bureaucrat{
 	private:

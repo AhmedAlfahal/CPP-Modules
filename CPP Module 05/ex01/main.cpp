@@ -15,9 +15,21 @@
 
 int main ( void )
 {
-	Form a("Ahmed", 150, 01);	
-	// Form aa(a);
-	// aa = a;
-	std::cout << a << std::endl;
-	// a.beSigned(Bureaucrat aBureaucrat)
+	Form a("Ahmed", 49, 01);
+	Form aa("Ahmed", 49, 01);
+	Bureaucrat bb("Hello", 100);
+	Bureaucrat b("Nadir", 100);
+	std::cout << "=====================================" << std::endl;
+	b.signForm(a);
+	a.beSigned(b);
+	b.signForm(a);
+	std::cout << "=====================================" << std::endl;
+	bb.signForm(a);
+	a.beSigned(bb);
+	bb.signForm(a);
+	std::cout << "=====================================" << std::endl;
+	b.signForm(aa);
+	aa.beSigned(b);
+	b.signForm(aa);
+	std::cout << "=====================================" << std::endl;
 }
