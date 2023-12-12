@@ -6,14 +6,14 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 23:53:38 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/12/09 00:16:03 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/12/12 15:04:10 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 
-#include "Form.hpp"
+#include "AForm.hpp"
 #include <iostream>
 
 class Bureaucrat{
@@ -31,7 +31,7 @@ class Bureaucrat{
 		int		getError() const ;
 		void	incrementGrade() ;
 		void	decrementGrade() ;
-		void	signForm( const Form & aForm );
+		void	signForm( const AForm & aForm );
 		int		getGrade() const ;
 
 };
