@@ -11,10 +11,13 @@
 /* ************************************************************************** */
 
 #include "AForm.hpp"
-#include "Bureaucrat.hpp"
 
 const char *AForm::GradeTooHighException::what() const throw(){
 	return ("AForm::GradeTooHighException");;
+}
+
+const char *AForm::FormIsNotSigned::what() const throw(){
+	return ("AForm::FormIsNotSigned");;
 }
 
 const char *AForm::GradeTooLowException::what() const throw(){

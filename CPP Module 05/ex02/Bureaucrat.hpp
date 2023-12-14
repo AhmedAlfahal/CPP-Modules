@@ -6,15 +6,16 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/05 23:53:38 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/12/12 15:04:10 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/12/14 15:39:22 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 
-#include "AForm.hpp"
 #include <iostream>
+
+class AForm;
 
 class Bureaucrat{
 	private:
@@ -33,6 +34,7 @@ class Bureaucrat{
 		void	decrementGrade() ;
 		void	signForm( const AForm & aForm );
 		int		getGrade() const ;
+		void	executeForm(AForm const & form);
 
 };
 class GradeTooHighException : public std::exception

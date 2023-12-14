@@ -6,18 +6,19 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 01:49:04 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/12/12 18:21:15 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/12/14 16:05:34 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef AFORM_HPP
 # define AFORM_HPP
 
+#include "Bureaucrat.hpp"
 #include <iostream>
-#include <fstream>
-class Bureaucrat;
-class AForm{
 
+class Bureaucrat;
+
+class AForm{
 	private:
 		const std::string name;
 		std::string signedBureaucrat;
@@ -40,7 +41,7 @@ class AForm{
 		std::string		getAFormName() const ;
 		std::string		getSignedBureaucrat() const ;
 		std::string		getSignedBureaucratName() const ;
-		virtual void	execute(Bureaucrat const & executor) const = 0;
+		virtual bool	execute(Bureaucrat const & executor) const = 0;
 	class GradeTooHighException : public std::exception
 	{
 		public:
@@ -48,6 +49,12 @@ class AForm{
 	};
 
 	class GradeTooLowException : public std::exception
+	{
+		public:
+			const char* what() const throw();
+	};
+	
+	class FormIsNotSigned : public std::exception
 	{
 		public:
 			const char* what() const throw();

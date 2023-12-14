@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:59:27 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/12/12 17:44:35 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/12/14 15:33:34 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class RobotomyRequestForm : public AForm{
 		RobotomyRequestForm & operator= ( const RobotomyRequestForm & aRobotomyRequestForm );
 		~RobotomyRequestForm ();
 		std::string getTarget() const;
-		void		execute(Bureaucrat const & executor) const;
+		bool		execute(Bureaucrat const & executor) const;
 };
 
 #endif

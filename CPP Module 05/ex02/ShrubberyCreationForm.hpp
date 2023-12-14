@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 14:59:27 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/12/12 17:44:28 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/12/14 15:50:18 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define SHRUBBERYCREATIONFORM_H
 
 #include "AForm.hpp"
+#include <fstream>
 
 class ShrubberyCreationForm : public AForm{
 	private:
@@ -24,7 +25,7 @@ class ShrubberyCreationForm : public AForm{
 		ShrubberyCreationForm & operator= ( const ShrubberyCreationForm & aShrubberyCreationForm );
 		~ShrubberyCreationForm ();
 		std::string	getTarget() const;
-		void		execute(Bureaucrat const & executor) const;
+		bool		execute(Bureaucrat const & executor) const;
 };
 
 #endif

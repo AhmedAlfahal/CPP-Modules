@@ -6,18 +6,17 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 17:24:47 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/12/12 18:26:25 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/12/14 15:49:59 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
-#include "AForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm ( std::string aTarget ) : AForm("ShrubberyCreationForm", 145, 137){
+ShrubberyCreationForm::ShrubberyCreationForm ( std::string aTarget ) : AForm("ShrubberyCreationForm", 145, 137) {
 	this->target = aTarget;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm ( const ShrubberyCreationForm & aShrubberyCreationForm ){
+ShrubberyCreationForm::ShrubberyCreationForm ( const ShrubberyCreationForm & aShrubberyCreationForm ) : AForm("ShrubberyCreationForm", 145, 137) {
 	if (this == &aShrubberyCreationForm)
 		return ;
 	*this = aShrubberyCreationForm;
@@ -37,16 +36,27 @@ std::string ShrubberyCreationForm::getTarget() const{
 	return (this->target);
 }
 
-void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const{
-	std::ifstream myFile;
-	myFile.open(this->getTarget() + "_shrubbery");
-	if (myFile.is_open() == false)
-	{
-		std::cout << this->getTarget() + "_shrubbery :cannot be created" << std::endl;
-		return ;
+bool	ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
+	try {
+		if (this->getIsSigned() == false)
+			throw (FormIsNotSigned());
+		if (this->getSignGrade() >= 150 - executor.getGrade())
+			throw (GradeTooHighException());
 	}
-	if (myFile.good())
-	{
-		myFile << "ascii tree" << std::endl;
+	catch ( std::exception & e ) {
+		std::cout << e.what() << std::endl;
+		return (false);
 	}
+	std::string myFile = this->getTarget() + "_shrubbery";
+	std::ofstream outfile (myFile.c_str());
+	if (outfile.is_open() == false)
+	{
+		std::cout << myFile + ":cannot be created" << std::endl;
+		return (false);
+	}
+	if (outfile.good())
+	{
+		outfile << "ascii tree" << std::endl;
+	}
+	return (true);
 }
