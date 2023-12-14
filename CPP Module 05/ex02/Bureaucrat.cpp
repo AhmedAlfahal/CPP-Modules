@@ -6,11 +6,11 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 02:22:48 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/12/14 16:05:08 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/12/14 16:13:43 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AForm.cpp"
+#include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat() : name("Bureaucrat"){
 	this->grade = 2;
@@ -120,20 +120,20 @@ void Bureaucrat::decrementGrade(){
 	}
 }
 
-void	Bureaucrat::signForm( const AForm & aForm ) {
-	if ("he did had the chance!!!!!" == aForm.getSignedBureaucrat())
-		std::cout << this->name << " couldn’t sign " << aForm.getAFormName() + " " + aForm.getSignedBureaucrat() << std::endl;
-	else
-		std::cout << aForm.getSignedBureaucrat() << std::endl;
-}
+// void	Bureaucrat::signForm( const AForm & aForm ) {
+// 	if ("he did had the chance!!!!!" == aForm.getSignedBureaucrat())
+// 		std::cout << this->name << " couldn’t sign " << aForm.getAFormName() + " " + aForm.getSignedBureaucrat() << std::endl;
+// 	else
+// 		std::cout << aForm.getSignedBureaucrat() << std::endl;
+// }
 
-void	Bureaucrat::executeForm(AForm const & form){
-	if (form.execute(*this) == false)
-		std::cout << form.getAFormName() + " couldn't be executed" << std::endl;
-	else
-	{
-		std::cout << this->getName() + " executed " + form.getAFormName() << std::endl;
-		for (int i = 0; i < form.getSignGrade(); i++)
-			this->decrementGrade();
-	}
-}
+// void	Bureaucrat::executeForm(AForm const & form){
+// 	if (form.execute(*this) == false)
+// 		std::cout << form.getAFormName() + " couldn't be executed" << std::endl;
+// 	else
+// 	{
+// 		std::cout << this->getName() + " executed " + form.getAFormName() << std::endl;
+// 		for (int i = 0; i < form.getSignGrade(); i++)
+// 			this->decrementGrade();
+// 	}
+// }

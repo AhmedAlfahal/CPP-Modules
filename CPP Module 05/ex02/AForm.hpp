@@ -6,15 +6,15 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 01:49:04 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/12/14 16:05:34 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/12/14 16:15:11 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef AFORM_HPP
 # define AFORM_HPP
 
-#include "Bureaucrat.hpp"
 #include <iostream>
+#include "Bureaucrat.hpp"
 
 class Bureaucrat;
 
