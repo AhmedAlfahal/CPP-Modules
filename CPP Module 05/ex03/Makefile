@@ -6,7 +6,7 @@
 #    By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/05 23:45:55 by aalfahal          #+#    #+#              #
-#    Updated: 2023/12/15 15:33:46 by aalfahal         ###   ########.fr        #
+#    Updated: 2023/12/15 16:20:22 by aalfahal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME		=	Form
 
 SRC			=	main.cpp					\
 				AForm.cpp					\
-				Intern.cpp					\																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																															
+				Intern.cpp					\
 				Bureaucrat.cpp				\
 				RobotomyRequestForm.cpp		\
 				ShrubberyCreationForm.cpp	\
