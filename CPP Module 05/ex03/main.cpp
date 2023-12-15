@@ -6,60 +6,25 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 02:36:38 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/12/14 18:06:32 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/12/15 15:17:23 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PresidentialPardonForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "ShrubberyCreationForm.hpp"
+#include "AForm.hpp"
+#include "Intern.hpp"
 
-#include "Bureaucrat.hpp"
-
-void	increaseGradeTest(Bureaucrat & aB){
-	for (int i = 0; aB.getGrade() != 1; i++)
-		aB.incrementGrade();
-}
 
 int main ( void )
 {
-	AForm *a = new PresidentialPardonForm("testPresindtial");
-	AForm *c = new RobotomyRequestForm("testRobot");
-	AForm *d = new ShrubberyCreationForm("tesShurbbery");
-	Bureaucrat b("Ahmed 1", 1);
-	std::cout << "--------------------------------------------------------------------------------------------------------------" << std::endl;
+	Intern aa;
+	AForm *b = aa.makeForm("presidential pardon", "2st");
+	AForm *a = aa.makeForm("romy request", "1st");
+	AForm *c = aa.makeForm("shrubbery creation", "1st");
+
 	std::cout << *a << std::endl;
-	std::cout << "--------------------------------------------------------------------------------------------------------------" << std::endl;
+	std::cout << *b << std::endl;
 	std::cout << *c << std::endl;
-	std::cout << "--------------------------------------------------------------------------------------------------------------" << std::endl;
-	std::cout << *d << std::endl;
-	std::cout << "--------------------------------------------------------------------------------------------------------------" << std::endl;
-	increaseGradeTest(b);
-	b.executeForm(*a);
-	std::cout << "--------------------------------------------------------------------------------------------------------------" << std::endl;
-	b.executeForm(*c);
-	std::cout << "--------------------------------------------------------------------------------------------------------------" << std::endl;
-	b.executeForm(*d);
-	std::cout << "--------------------------------------------------------------------------------------------------------------" << std::endl;
-	a->beSigned(b);
-	std::cout << "--------------------------------------------------------------------------------------------------------------" << std::endl;
-	c->beSigned(b);
-	std::cout << "--------------------------------------------------------------------------------------------------------------" << std::endl;
-	increaseGradeTest(b);
-	d->beSigned(b);
-	std::cout << "--------------------------------------------------------------------------------------------------------------" << std::endl;
-	increaseGradeTest(b);
-	b.signForm(*a);
-	std::cout << "--------------------------------------------------------------------------------------------------------------" << std::endl;
-	b.signForm(*c);
-	std::cout << "--------------------------------------------------------------------------------------------------------------" << std::endl;
-	b.signForm(*d);
-	std::cout << "--------------------------------------------------------------------------------------------------------------" << std::endl;
-	b.executeForm(*a);
-	std::cout << "--------------------------------------------------------------------------------------------------------------" << std::endl;
-	b.executeForm(*c);
-	std::cout << "--------------------------------------------------------------------------------------------------------------" << std::endl;
-	increaseGradeTest(b);
-	b.executeForm(*d);
-	std::cout << "--------------------------------------------------------------------------------------------------------------" << std::endl;
+	delete a;
+	delete b;
+	delete c;
 }
