@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 12:33:58 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/12/17 12:49:41 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/12/17 14:52:42 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ AForm *Intern::makeForm( std::string aForm, std::string aTarget ){
 	AForm *newForm;
 	AForm* ( Intern :: *p[3] ) ( std::string ) = { &Intern::RobotomyRequest, &Intern::ShrubberyCreation, &Intern::PresidentialPardon };
 	std::string forms[3] = { "robotomy request", "shrubbery creation", "presidential pardon" };
-	for (size_t i = 0; i < forms->size(); i++)
+	for (size_t i = 0; i < 3; i++)
 	{
 		if (aForm == forms[i])
 			index = i;
