@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 01:49:04 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/12/09 00:36:31 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/12/16 14:57:25 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ class Form{
 		public:
 			const char* what() const throw();
 	};
-
 	class GradeTooLowException : public std::exception
 	{
 		public:

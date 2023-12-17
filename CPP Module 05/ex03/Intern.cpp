@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 12:33:58 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/12/15 14:44:56 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/12/17 12:49:41 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,13 @@ AForm *Intern::PresidentialPardon( std::string aTarget ){
 	return (new PresidentialPardonForm( aTarget ));
 }
 
+const char* Intern::FormCouldNotBeCreated::what() const throw(){
+	return ("Intern::FormCouldNotBeCreated");
+}
 
 AForm *Intern::makeForm( std::string aForm, std::string aTarget ){
-	int index = 0;
-	AForm *newForm = NULL;
-	if (aForm.empty())
-		return (NULL);
+	int index = -1;
+	AForm *newForm;
 	AForm* ( Intern :: *p[3] ) ( std::string ) = { &Intern::RobotomyRequest, &Intern::ShrubberyCreation, &Intern::PresidentialPardon };
 	std::string forms[3] = { "robotomy request", "shrubbery creation", "presidential pardon" };
 	for (size_t i = 0; i < forms->size(); i++)
@@ -59,6 +60,7 @@ AForm *Intern::makeForm( std::string aForm, std::string aTarget ){
 		if (aForm == forms[i])
 			index = i;
 	}
+	try {
 		switch (index){
 		case 0:
 			newForm = (this->*(p[index]))(aTarget);
@@ -72,7 +74,14 @@ AForm *Intern::makeForm( std::string aForm, std::string aTarget ){
 			newForm = (this->*(p[index]))(aTarget);
 			std::cout << "Intern creates " +  aForm<< std::endl;
 			break;
-		default: std::cout << aForm + " does not exist" << std::endl;
+		default: 
+			std::cout << aForm + " does not exist" << std::endl;
+			throw ( Intern::FormCouldNotBeCreated() );
+		}
 	}
+	catch ( std::exception & e ) {
+		std::cout << e.what() << std::endl;
+	}
+	
 	return (newForm);
 }

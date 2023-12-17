@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 02:22:48 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/12/14 17:35:15 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/12/17 12:52:30 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ Bureaucrat::Bureaucrat() : name("Bureaucrat"){
 	this->error = 0;
 }
 
-const char *GradeTooHighException::what() const throw(){
-	return ("Bureaucrat::GradeTooHighException");;
+const char *Bureaucrat::GradeTooHighException::what() const throw(){
+	return ("Bureaucrat::GradeTooHighException");
 }
 
-const char *GradeTooLowException::what() const throw(){
+const char *Bureaucrat::GradeTooLowException::what() const throw(){
 	return ("Bureaucrat::GradeTooLowException");
 }
 
@@ -38,9 +38,9 @@ Bureaucrat & Bureaucrat::operator= ( const Bureaucrat &aBureaucrat ){
 	this->error = 0;
 	try {
 		if (this->grade > 150)
-			throw GradeTooLowException();
+			throw (Bureaucrat::GradeTooLowException());
 		else if (this->grade < 1)
-			throw GradeTooHighException();
+			throw (Bureaucrat::GradeTooHighException());
 	}
 	catch ( std::exception & e ) {
 		std::cout << e.what() << std::endl;
@@ -60,9 +60,9 @@ Bureaucrat::Bureaucrat( std::string aName, int aGrade ) : name(aName){
 	this->error = 0;
 	try {
 		if (this->grade > 150)
-			throw GradeTooLowException();
+			throw (Bureaucrat::GradeTooLowException());
 		else if (this->grade < 1)
-			throw GradeTooHighException();
+			throw (Bureaucrat::GradeTooHighException());
 	}
 	catch ( std::exception & e ) {
 		std::cout << e.what() << std::endl;
@@ -97,9 +97,9 @@ void Bureaucrat::incrementGrade(){
 	this->grade--;
 	try {
 		if (this->grade > 150)
-			throw GradeTooLowException();
+			throw (Bureaucrat::GradeTooLowException());
 		else if (this->grade < 1)
-			throw GradeTooHighException();
+			throw (Bureaucrat::GradeTooHighException());
 	}
 	catch ( std::exception & e ) {
 		std::cout << e.what() << std::endl;
@@ -111,9 +111,9 @@ void Bureaucrat::decrementGrade(){
 	this->grade++;
 	try {
 		if (this->grade > 150)
-			throw GradeTooLowException();
+			throw (Bureaucrat::GradeTooLowException());
 		else if (this->grade < 1)
-			throw GradeTooHighException();
+			throw (Bureaucrat::GradeTooHighException());
 	}
 	catch ( std::exception & e ) {
 		std::cout << e.what() << std::endl;

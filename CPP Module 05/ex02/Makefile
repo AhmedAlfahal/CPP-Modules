@@ -6,13 +6,13 @@
 #    By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/05 23:45:55 by aalfahal          #+#    #+#              #
-#    Updated: 2023/12/14 16:17:16 by aalfahal         ###   ########.fr        #
+#    Updated: 2023/12/15 12:21:58 by aalfahal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX			=	c++
 
-CXXFLAGS	=	-Wall -Werror -Wextra -g3 -std=c++98
+CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 
 NAME		=	Form
 

@@ -13,11 +13,11 @@
 #include "AForm.hpp"
 
 const char *AForm::GradeTooHighException::what() const throw(){
-	return ("AForm::GradeTooHighException");;
+	return ("AForm::GradeTooHighException");
 }
 
 const char *AForm::FormIsNotSigned::what() const throw(){
-	return ("AForm::FormIsNotSigned");;
+	return ("AForm::FormIsNotSigned");
 }
 
 const char *AForm::GradeTooLowException::what() const throw(){
@@ -37,9 +37,9 @@ AForm::AForm( std::string aName, int reqSign, int reqExec) : name(aName), signGr
 	this->error = 0;
 	try {
 		if (this->getSignGrade() > 150 || this->getExecGrade() > 150)
-			throw GradeTooLowException();
+			throw (AForm::GradeTooLowException());
 		else if (this->getSignGrade() < 1 || this->getExecGrade() < 1)
-			throw GradeTooHighException();
+			throw (AForm::GradeTooHighException());
 	}
 	catch ( std::exception & e ) {
 		std::cout << e.what() << std::endl;
@@ -76,9 +76,9 @@ AForm & AForm::operator= ( const AForm & aAForm ){
 	this->isSigned = aAForm.getIsSigned();
 	try {
 		if (this->getSignGrade() > 150 || this->getExecGrade() > 150)
-			throw (GradeTooLowException());
+			throw (AForm::GradeTooLowException());
 		else if (this->getSignGrade() < 1 || this->getExecGrade() < 1)
-			throw (GradeTooHighException());
+			throw (AForm::GradeTooHighException());
 	}
 	catch ( std::exception & e ) {
 		std::cout << e.what() << std::endl;
@@ -138,7 +138,7 @@ void AForm::beSigned( Bureaucrat & aBureaucrat ) {
 	}
 	try {
 		if (this->getSignGrade() >= 150 - aBureaucrat.getGrade())
-			throw (GradeTooLowException());
+			throw (AForm::GradeTooLowException());
 		for (int i = 0; i < this->getSignGrade(); i++)
 			aBureaucrat.decrementGrade();
 		this->signedBureaucratName = aBureaucrat.getName();

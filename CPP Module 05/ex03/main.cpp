@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 02:36:38 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/12/15 15:17:23 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/12/17 12:50:08 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 int main ( void )
 {
 	Intern aa;
+	AForm *a = aa.makeForm("robotomy equest", "1st");
 	AForm *b = aa.makeForm("presidential pardon", "2st");
-	AForm *a = aa.makeForm("romy request", "1st");
-	AForm *c = aa.makeForm("shrubbery creation", "1st");
+	AForm *c = aa.makeForm("shrubbery creation", "3st");
 
 	std::cout << *a << std::endl;
 	std::cout << *b << std::endl;

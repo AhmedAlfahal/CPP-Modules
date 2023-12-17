@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 12:30:00 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/12/15 15:34:54 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/12/17 12:40:11 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ class Intern{
 		Intern & operator= ( const Intern &aIntern );
 		~Intern();
 		AForm *makeForm( std::string aForm, std::string aTarget );
+	class FormCouldNotBeCreated : public std::exception
+	{
+		public:
+			const char* what() const throw();
+	};
 };
 
 #endif

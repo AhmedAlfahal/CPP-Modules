@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/06 02:22:48 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/12/15 16:19:05 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/12/17 12:52:32 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Bureaucrat::Bureaucrat() : name("Bureaucrat"){
 }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw(){
-	return ("Bureaucrat::GradeTooHighException");;
+	return ("Bureaucrat::GradeTooHighException");
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw(){

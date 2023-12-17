@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 01:48:57 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/12/09 00:39:18 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/12/17 12:52:23 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "Bureaucrat.hpp"
 
 const char *Form::GradeTooHighException::what() const throw(){
-	return ("Form::GradeTooHighException");;
+	return ("Form::GradeTooHighException");
 }
 
 const char *Form::GradeTooLowException::what() const throw(){
@@ -34,9 +34,9 @@ Form::Form( std::string aName, int reqSign, int reqExec) : name(aName), signGrad
 	this->error = 0;
 	try {
 		if (this->getSignGrade() > 150 || this->getExecGrade() > 150)
-			throw GradeTooLowException();
+			throw (Form::GradeTooLowException());
 		else if (this->getSignGrade() < 1 || this->getExecGrade() < 1)
-			throw GradeTooHighException();
+			throw (Form::GradeTooHighException());
 	}
 	catch ( std::exception & e ) {
 		std::cout << e.what() << std::endl;
@@ -73,9 +73,9 @@ Form & Form::operator= ( const Form & aForm ){
 	this->isSigned = aForm.getIsSigned();
 	try {
 		if (this->getSignGrade() > 150 || this->getExecGrade() > 150)
-			throw (GradeTooLowException());
+			throw (Form::GradeTooLowException());
 		else if (this->getSignGrade() < 1 || this->getExecGrade() < 1)
-			throw (GradeTooHighException());
+			throw (Form::GradeTooHighException());
 	}
 	catch ( std::exception & e ) {
 		std::cout << e.what() << std::endl;
@@ -135,7 +135,7 @@ void Form::beSigned( Bureaucrat & aBureaucrat ) {
 	}
 	try {
 		if (this->getSignGrade() >= 150 - aBureaucrat.getGrade())
-			throw (GradeTooLowException());
+			throw (Form::GradeTooLowException());
 		for (int i = 0; i < this->getSignGrade(); i++)
 			aBureaucrat.decrementGrade();
 		this->signedBureaucratName = aBureaucrat.getName();
