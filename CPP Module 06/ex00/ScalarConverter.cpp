@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 14:52:59 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/12/18 13:31:57 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/12/21 05:13:22 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void ScalarConverter::convert( std::string aString ){
 	std::cout << "int " << intt<< std::endl;\
 	if (floatt == intt)
 	{
-		std::cout << "float " << floatt << ".0f"<< std::endl;	
+		std::cout << "float " << floatt << ".0f"<< std::endl;
 		std::cout << "double " << doublee << ".0" << std::endl;
 		return ;
 	}
