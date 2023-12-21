@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 12:33:58 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/12/21 05:23:28 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/12/21 09:27:35 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include <iostream>
 
 Intern::Intern(){
 }
