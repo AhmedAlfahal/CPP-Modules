@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 14:52:59 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/12/21 05:13:22 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/12/21 05:58:43 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ ScalarConverter::~ScalarConverter(){
 
 static bool parse( std::string aString ){
 	bool result = true;
+	if (aString.length() == 1 && !(aString[0] >= '0' && aString[0] <= '9'))
+		return (false);
 	for (size_t i = 0; i < aString.length(); i++){
 		if ((aString[i] == '-' || aString[i] == '+') && i != 0){
 			result = false;
@@ -54,10 +56,7 @@ static bool parse( std::string aString ){
 }
 
 void ScalarConverter::convert( std::string aString ){
-	char	charr = 0;
-	int		intt = 0;
-	float	floatt = 0;
-	double	doublee = 0;
+	float	newValue = 0;
 	
 	if (aString == "nan" || aString == "nanf")
 	{
@@ -90,22 +89,19 @@ void ScalarConverter::convert( std::string aString ){
 	}
 	else
 	{
-		floatt = atof(aString.c_str());
-		doublee = floatt;
-		intt = floatt;
-		charr = floatt;
-		if (charr >= 32 && charr <= 126)
-			std::cout << "char '" << charr << "'" << std::endl;
+		newValue = atof(aString.c_str());
+		if (static_cast<char> (newValue) >= 32 && static_cast<char> (newValue) <= 126)
+			std::cout << "char '" << static_cast<char> (newValue) << "'" << std::endl;
 		else
 			std::cout << "char: impossible" << std::endl;
 	}
-	std::cout << "int " << intt<< std::endl;\
-	if (floatt == intt)
+	std::cout << "int " << static_cast<int> (newValue)<< std::endl;\
+	if (newValue == static_cast<int> (newValue))
 	{
-		std::cout << "float " << floatt << ".0f"<< std::endl;
-		std::cout << "double " << doublee << ".0" << std::endl;
+		std::cout << "float " << static_cast<float> (newValue) << ".0f"<< std::endl;
+		std::cout << "double " << static_cast<double> (newValue) << ".0" << std::endl;
 		return ;
 	}
-	std::cout << "float " << floatt << "f"<< std::endl;
-	std::cout << "double " << doublee << std::endl;
+	std::cout << "float " << static_cast<float> (newValue) << "f"<< std::endl;
+	std::cout << "double " << static_cast<double> (newValue) << std::endl;
 }
