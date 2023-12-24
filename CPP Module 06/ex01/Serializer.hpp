@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 13:41:22 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/12/21 07:59:03 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/12/24 22:47:13 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,14 @@ struct Data{
 };
 
 class Serializer{
-	public:
+	private:
 		Serializer();
+		~Serializer();
 		Serializer( const  Serializer & aSerializer );
 		Serializer & operator= ( const Serializer & aSerializer );
+	public:
 		static uintptr_t serialize(Data* ptr);
 		static Data* deserialize(uintptr_t raw);
-		virtual ~Serializer() = 0;
 };
 
 #endif
