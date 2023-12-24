@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <stdint.h>
+#include <exception>
 
 class Base {
 	public:

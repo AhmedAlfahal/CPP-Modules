@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/17 14:52:59 by aalfahal          #+#    #+#             */
-/*   Updated: 2023/12/21 05:58:43 by aalfahal         ###   ########.fr       */
+/*   Updated: 2023/12/25 03:46:45 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,9 @@ static bool parse( std::string aString ){
 		else if (!(aString[i] >= '0' && aString[i] <= '9') && aString[i] != '.'){
 			result = false;
 		}
+		else if ((aString[i] == '.' && i == aString.length() - 1) 
+				|| (aString[i] == '.' && !(aString[i + 1] >= '0' && aString[i + 1] <= '9')))
+			result = false;
 	}
 	return (result);
 }

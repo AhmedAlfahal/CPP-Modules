@@ -27,17 +27,16 @@ Base * generate(void){
 						, &aB, &aC, &aA	\
 						, &aC, &aA, &aB	\
 						, &aC, &aB, &aA};
-	std::cout << "HEYYYYYY " << i % 18 << std::endl;
 	delete tmp;
 	return (p[i % 18]());
 }
 void identify(Base* p){
 	std::string what = "Base";
-	if (dynamic_cast <A *> (p) != nullptr)
+	if (dynamic_cast <A *> (p) != NULL)
 		what = "A";
-	else if (dynamic_cast <B *> (p) != nullptr)
+	else if (dynamic_cast <B *> (p) != NULL)
 		what = "B";
-	else if (dynamic_cast <C *> (p) != nullptr)
+	else if (dynamic_cast <C *> (p) != NULL)
 		what = "C";
 	std::cout << "the actual type of the object pointed to by p is " + what << std::endl;
 }
@@ -46,18 +45,18 @@ void identify(Base& p){
         A& base = dynamic_cast<A&>(p);
 		std::cout << "the actual type of the object pointed to by p is A"<< std::endl;
 		(void)base;
-    } catch (const std::bad_cast& e) {
+    } catch ( std::exception & e ) {
     }
     try {
         B& base = dynamic_cast<B&>(p);
 		std::cout << "the actual type of the object pointed to by p is B"<< std::endl;
 		(void)base;
-    } catch (const std::bad_cast& e) {
+    } catch ( std::exception & e ) {
     }
     try {
         C& base = dynamic_cast<C&>(p);
 		std::cout << "the actual type of the object pointed to by p is C"<< std::endl;
 		(void)base;
-    } catch (const std::bad_cast& e) {
+    } catch ( std::exception & e ) {
     }
 }
