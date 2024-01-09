@@ -13,19 +13,25 @@
 #ifndef ARRAY_HPP
 #define ARRAY_HPP
 
-
+#include <exception>
 template <typename T>
 class Array {
 	private:
 		T *elements;
+		int	arraySize;
 	public:
     	Array ();
     	Array ( unsigned int n );
-		Array( Array & aArray );
-		Array & operator= ( Array & aArray );
+		Array( const Array & aArray );
+		Array & operator= ( const Array & aArray );
     	~Array ();
 		T & operator[] (int index);
-		int	size();
+		int	size() const;
+		class OutOfBoundaries : public std::exception
+		{
+			public:
+				const char* what() const throw();
+		};
 };
 
 #include "Array.tpp"
