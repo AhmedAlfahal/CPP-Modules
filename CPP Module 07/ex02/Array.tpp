@@ -8,17 +8,20 @@ const char *Array<T>::OutOfBoundaries::what() const throw(){
 	return ("Array<T>::OutOfBoundaries");
 }
 
-template <typename T> Array<T>::Array(){
+template <typename T>
+Array<T>::Array(){
 	this->elements = new T[1];
-	this->elements[0] = NULL;
+	this->elements[0] = 0;
 	this->arraySize = 0;
 }
-template <typename T> Array<T>::Array ( unsigned int n ){
+template <typename T>
+Array<T>::Array ( unsigned int n ){
 	this->elements = new T[n + 1];
 	this->elements[n] = 0;
 	this->arraySize = n;
 }
-template <typename T> Array<T>::Array( const Array & aArray ){
+template <typename T>
+Array<T>::Array( const Array & aArray ){
 	if (this == &aArray)
 		return ;
 	*this = aArray;
@@ -28,7 +31,9 @@ Array<T> & Array<T>::operator= ( const Array & aArray ){
 	if (this == &aArray)
 		return (*this);
 	this->arraySize = aArray.size();
-	this->elements = new T[this->arraySize];
+	this->elements = new T[this->size()];
+	for (int i = 0; i < this->size(); i++)
+		this->elements[i] = aArray.elements[i];
 	return (*this);
 }
 template <typename T>

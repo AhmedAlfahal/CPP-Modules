@@ -15,8 +15,17 @@ int main(int, char**)
     }
     //SCOPE
     {
-        Array<int> tmp = numbers;
+        Array<int> tmp;
         Array<int> test(tmp);
+		tmp = test;
+		tmp = test;
+		for (int i = 0; i < MAX_VAL; i++)
+    	{
+			std::cout << "-------------------------------------" << std::endl;
+			std::cout << "tmp: " << tmp[i] << std::endl;
+			std::cout << "test: " << test[i] << std::endl;
+			std::cout << "-------------------------------------" << std::endl;
+    	}
     }
 
     for (int i = 0; i < MAX_VAL; i++)

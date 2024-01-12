@@ -6,7 +6,7 @@
 /*   By: aalfahal <aalfahal@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 08:49:44 by aalfahal          #+#    #+#             */
-/*   Updated: 2024/01/07 23:36:51 by aalfahal         ###   ########.fr       */
+/*   Updated: 2024/01/12 22:49:20 by aalfahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 template <typename T>
 class Array {
 	private:
-		T *elements;
 		int	arraySize;
+		T *elements;
 	public:
     	Array ();
     	Array ( unsigned int n );
