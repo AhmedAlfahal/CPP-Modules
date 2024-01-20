@@ -31,13 +31,13 @@ int main ()
 	std::cout << "-------------------------------------" << std::endl;
 	fill(test1, 10, std::string("Hello"));
 	print(test1, 10);
-	iter(test1, 10, chnageITs);
+	iter(*test1, 10, chnageITs);
 	print(test1, 10);
 	std::cout << "-------------------------------------" << std::endl;
 	std::cout << "-------------------------------------" << std::endl;
 	fill(test2, 10, 251);
 	print(test2, 10);
-	iter(test2, 10, chnageITi);
+	iter(*test2, 10, chnageITi);
 	print(test2, 10);
 	std::cout << "-------------------------------------" << std::endl;
 }
