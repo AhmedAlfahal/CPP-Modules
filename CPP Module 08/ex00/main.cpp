@@ -15,13 +15,14 @@
 #include <deque>
 #include <forward_list>
 #include <list>
+#include <array>
 #include "easyfind.hpp"
 
 
 
 int main( void ){
 	/********************Declearing*Containers*****************/
-	// int g0[] = {1, 2, 3, 4};
+	std::array <int, 4> g0 = {1, 2, 3, 4};
 	std::vector<int> g1;
 	std::deque<int> g2;
 	std::forward_list<int> g3;
@@ -42,15 +43,15 @@ int main( void ){
 	}
 	/**********************************************************/
 	/*******************Printing*Them**************************/
-	// printCon(g0);
-	// printCon(g1);
-	// printCon(g2);
-	// printCon(g3);
-	// printCon(g4);
+	printCon(g0);
+	printCon(g1);
+	printCon(g2);
+	printCon(g3);
+	printCon(g4);
 	/**********************************************************/
-	// easyfind(g0, 1);
-	easyfind(g1, 1);
-	easyfind(g2, 1);
-	easyfind(g3, 1);
-	easyfind(g4, 1);
+	easyfind(g0, 3);
+	easyfind(g1, 3);
+	easyfind(g2, 3);
+	easyfind(g3, 3);
+	easyfind(g4, 3);
 }
