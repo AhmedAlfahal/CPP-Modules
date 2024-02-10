@@ -14,34 +14,16 @@
 #define EASYFIND_HPP
 
 #include <iostream>
-#include <vector>
-template<typename  T>
-void easyfind(const T& t, int toFind)
+#include <exception>
+#include "easyfind.tpp"
+class ElementNotFound : public std::exception
 {
-	int i = 0;
-	typename T::const_iterator it;
-	for (it = t.begin(); it != t.end(); ++it) {
-		if (toFind == *it)
-		{
-			std::cout << "Found at " << i << std::endl;
-			return ;	
-		}
-		i++;
-    }
-	std::cout << "Not Found" << std::endl;
-}
+	public:
+		const char* what() const throw();
+};
 
-template<typename  T>
-void printCon(const T& t)
-{	
-	std::cout << "--------------------------------------------" << std::endl;
-	std::cout << "[ ";
-	typename T::const_iterator it;
-	for (it = t.begin(); it != t.end(); ++it) {
-		std::cout << *it << " ";
-    }
-	std::cout << "]" << std::endl;
-	std::cout << "--------------------------------------------" << std::endl;
-}
+template<typename  T> void easyfind(const T& t, int toFind);
+
+template<typename  T> void printCon(const T& t);
 
 #endif
