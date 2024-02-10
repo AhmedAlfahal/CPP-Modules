@@ -14,30 +14,34 @@
 #include <string>
 
 
-void	chnageITs(std::string & a)
+class Awesome
 {
-	a = "69";
+  public:
+    Awesome( void ) : _n( 42 ) { return; }
+    int get( void ) const { return this->_n; }
+  private:
+    int _n;
+};
+
+std::ostream & operator<<( std::ostream & o, Awesome const & rhs )
+{
+  o << rhs.get();
+  return o;
 }
 
-void	chnageITi(int & a)
+template< typename T >
+void print( T& x )
 {
-	a = 69;
+  std::cout << x << std::endl;
+  return;
 }
 
-int main ()
-{
-	std::string test1[10];
-	int test2[10];
-	std::cout << "-------------------------------------" << std::endl;
-	fill(test1, 10, std::string("Hello"));
-	print(test1, 10);
-	iter(*test1, 10, chnageITs);
-	print(test1, 10);
-	std::cout << "-------------------------------------" << std::endl;
-	std::cout << "-------------------------------------" << std::endl;
-	fill(test2, 10, 251);
-	print(test2, 10);
-	iter(*test2, 10, chnageITi);
-	print(test2, 10);
-	std::cout << "-------------------------------------" << std::endl;
+int main() {
+  int tab[] = { 0, 1, 2, 3, 4 };
+  Awesome tab2[5];
+
+  iter( tab, 5, print<const int> );
+  iter( tab2, 5, print<Awesome> );
+
+  return 0;
 }

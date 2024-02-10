@@ -14,13 +14,20 @@
 #define EASYFIND_HPP
 
 #include <iostream>
-#include <iterator>
+#include <vector>
 template<typename  T>
 void easyfind(const T& t, int toFind)
 {
-	typename T::const_iterator it;
-	for (it = t.begin(); it != t.end(); ++it) {
-		if (toFind == *it)
+	// typename T::const_iterator it;
+	// for (it = t.begin(); it != t.end(); ++it) {
+	// 	if (toFind == *it)
+	// 	{
+	// 		std::cout << "Found" << std::endl;
+	// 		return ;	
+	// 	}
+    // }
+	for (unsigned long i = 0; i < t.size(); i++) {
+		if (toFind == t.at(i))
 		{
 			std::cout << "Found" << std::endl;
 			return ;	
@@ -29,17 +36,17 @@ void easyfind(const T& t, int toFind)
 	std::cout << "Not Found" << std::endl;
 }
 
-template<typename  T>
-void printCon(const T& t)
-{	
-	std::cout << "--------------------------------------------" << std::endl;
-	std::cout << "[ ";
-	typename T::const_iterator it;
-	for (it = t.begin(); it != t.end(); ++it) {
-		std::cout << *it << " ";
-    }
-	std::cout << "]" << std::endl;
-	std::cout << "--------------------------------------------" << std::endl;
-}
+// template<typename  T>
+// void printCon(const T& t)
+// {	
+// 	std::cout << "--------------------------------------------" << std::endl;
+// 	std::cout << "[ ";
+// 	typename T::const_iterator it;
+// 	for (it = t.begin(); it != t.end(); ++it) {
+// 		std::cout << *it << " ";
+//     }
+// 	std::cout << "]" << std::endl;
+// 	std::cout << "--------------------------------------------" << std::endl;
+// }
 
 #endif

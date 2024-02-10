@@ -15,33 +15,12 @@
 
 #include <iostream>
 
-template <typename T>
-void iter(T  & array, int len, void (f)(T&))
+template <typename T, typename U>
+void iter(T  & array, int len, void (f)(U))
 {
 	for (int i = 0 ; i < len; i++)
 		f(array[i]);
 }
 
-template <typename T> 
-void print(T  *array, int len)
-{
-	std::cout << "[ ";
-	for (int i = 0 ; i < len; i++)
-		std::cout << array[i]  << ", ";
-	std::cout << " ]" << std::endl;
-}
-
-template <typename T> 
-void fill(T *array, int len, T fill)
-{
-	for (int i = 0 ; i < len; i++)
-		array[i] = fill;
-}
-
-template <typename T> 
-void test(T & array)
-{
-	(void )array;
-}
 
 #endif
