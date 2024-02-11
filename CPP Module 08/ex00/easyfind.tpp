@@ -1,9 +1,14 @@
 #ifndef EASYFIND_TPP
 #define EASYFIND_TPP
 
-const char *ElementNotFound::what() const throw(){
-	return ("easyfind::ElementNotFound");
-}
+#include <exception>
+#include <iostream>
+
+class ElementNotFound : public std::exception
+{
+	public:
+		const char* what() const throw();
+};
 
 template<typename  T>
 void easyfind(const T& t, int toFind)

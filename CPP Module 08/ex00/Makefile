@@ -17,7 +17,7 @@ CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 
 NAME		=	array
 
-SRC			=	main.cpp
+SRC			=	main.cpp easyfind.cpp
 
 OBJS		=	$(SRC:.cpp=.o)
 

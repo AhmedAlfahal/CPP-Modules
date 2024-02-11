@@ -16,11 +16,6 @@
 #include <iostream>
 #include <exception>
 #include "easyfind.tpp"
-class ElementNotFound : public std::exception
-{
-	public:
-		const char* what() const throw();
-};
 
 template<typename  T> void easyfind(const T& t, int toFind);
 
