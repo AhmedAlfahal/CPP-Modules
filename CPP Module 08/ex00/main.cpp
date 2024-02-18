@@ -49,9 +49,14 @@ int main( void ){
 	printCon(g3);
 	printCon(g4);
 	/**********************************************************/
-	easyfind(g0, 3);
-	easyfind(g1, 3);
-	easyfind(g2, 3);
-	easyfind(g3, 3);
-	easyfind(g4, 3);
+	try{
+		easyfind(g0, 4);
+		easyfind(g1, 3);
+		easyfind(g2, 3);
+		easyfind(g3, 3);
+		easyfind(g4, 3);
+	}
+	catch (std::exception &e){
+		std::cout << e.what() << std::endl;
+	}
 }

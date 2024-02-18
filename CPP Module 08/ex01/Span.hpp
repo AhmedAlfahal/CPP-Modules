@@ -1,30 +1,35 @@
 #ifndef SPAN_HPP
 #define SPAN_HPP
 
-#include <iostream>
-#include <exception>
 #include <vector>
+#include <iostream>
 #include <algorithm>
+#include <exception>
 
-class Span
-{
+class Span {
+
 	private:
 		unsigned int N;
-		std::vector<int> V;
-		Span();
+		std::vector < int > V;
 	public:
-		Span(unsigned int aN);
-		Span(const Span &src);
+		Span ( unsigned int aN );
+		Span ( const Span & aSpan );
+		Span & operator= ( const Span & aSpan );
 		~Span();
-		Span &operator=(const Span &src);
-		void addNumber(int n);
-		int shortestSpan();
-		int longestSpan();
-		class NoSpan : public std::exception
-		{
-			public:
-				const char* what() const throw();
-		};
+		int		longestSpan();
+		int		shortestSpan();
+		void	addNumber( int aNumber );
+		void	addNumber( void );
+	class OutOfBoundries : public std::exception
+	{
+		public:
+			const char* what() const throw();
+	};
+	class OnlyOneElement : public std::exception
+	{
+		public:
+			const char* what() const throw();
+	};
 };
 
 #endif

@@ -3,6 +3,8 @@
 
 #include <exception>
 #include <iostream>
+#include <algorithm>
+#include <iterator>
 
 class ElementNotFound : public std::exception
 {
@@ -13,17 +15,11 @@ class ElementNotFound : public std::exception
 template<typename  T>
 void easyfind(const T& t, int toFind)
 {
-	int i = 0;
-	typename T::const_iterator it;
-	for (it = t.begin(); it != t.end(); ++it) {
-		if (toFind == *it)
-		{
-			std::cout << "Found at " << i << std::endl;
-			return ;	
-		}
-		i++;
-    }
-	throw ElementNotFound();
+	typename T::const_iterator it = std::find(t.begin(), t.end(), toFind);
+	if (*it == toFind)
+		std::cout << "found" << std::endl;
+	else
+		throw ElementNotFound();
 }
 
 template<typename  T>

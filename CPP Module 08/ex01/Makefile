@@ -13,9 +13,9 @@
 
 CXX			=	c++
 
-CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
+CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98 -g3 -fsanitize=address
 
-NAME		=	array
+NAME		=	span
 
 SRC			=	main.cpp Span.cpp
 
