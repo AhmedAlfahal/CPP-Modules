@@ -13,7 +13,7 @@
 
 CXX			=	c++
 
-CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98 -g3 -fsanitize=address
+CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 
 NAME		=	span
 
