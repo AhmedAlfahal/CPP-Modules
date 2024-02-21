@@ -3,6 +3,7 @@
 int main()
 {
 	MutantStack<int> mstack;
+	MutantStack<int> g;
 	mstack.push(5);
 	mstack.push(17);
 	std::cout << mstack.top() << std::endl;
@@ -13,15 +14,19 @@ int main()
 	mstack.push(737);
 	//[...]
 	mstack.push(0);
-	MutantStack<int>::iterator it = mstack.begin();
-	MutantStack<int>::iterator ite = mstack.end();
+	g = mstack;
+	MutantStack<int>::iterator it = g.begin();
+	MutantStack<int>::iterator ite = g.end();
 	++it;
 	--it;
+	std::cout << *it << std::endl;
+		std::cout << "----------------------------------" << std::endl;
 	while (it != ite)
 	{
 		std::cout << *it << std::endl;
 		++it;
 	}
+		std::cout << "----------------------------------" << std::endl;
 	std::stack<int> s(mstack);
 	return 0;
 }
