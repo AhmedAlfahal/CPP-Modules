@@ -13,11 +13,11 @@
 
 CXX			=	c++
 
-CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98 -g3
+CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 
 NAME		=	mutantStack
 
-SRC			=	main.cpp MutantStack.cpp
+SRC			=	main.cpp
 
 OBJS		=	$(SRC:.cpp=.o)
 
