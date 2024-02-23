@@ -53,6 +53,11 @@ static bool validateDate( std::string & date )
 	std::istringstream d(date);
 	std::string num;
 	int counter = 0;
+	if (date.length() != 10)
+	{
+		std::cerr << "Date is not valid " << date << std::endl;
+		return (false);
+	}
 	while (std::getline(d, num, '-')){
 		if (counter > 2)
 		{
@@ -63,6 +68,30 @@ static bool validateDate( std::string & date )
 		{
 			std::cerr << "Wrong digits " << num << std::endl;
 			return (false);
+		}
+		if (counter == 0 )
+		{
+			if (atoi(num.c_str()) > 2024 || num.length() != 4)
+			{
+				std::cerr << "year is not valid " << num << std::endl;
+				return (false);
+			}
+		}
+		else if (counter == 1)
+		{
+			if (atoi(num.c_str()) > 12 || num.length() != 2)
+			{
+				std::cerr << "month is not valid " << num << std::endl;
+				return (false);
+			}
+		}
+		else if (counter == 2)
+		{
+			if (atoi(num.c_str()) > 31 || num.length() != 2)
+			{
+				std::cerr << "day is not valid " << num << std::endl;
+				return (false);
+			}
 		}
 		counter++;
 	}
@@ -102,6 +131,8 @@ bool BitcoinExchange::readDataBase()
 	{
 		numberOfWords = 0;
 		std::getline(myFile, line);
+		if (line[line.length() - 1] == ',')
+			return (false);
 		std::stringstream l(line);
 		while (std::getline(l, word,','))
 		{
@@ -117,9 +148,9 @@ bool BitcoinExchange::readDataBase()
 			}
 			else if (numberOfWords == 1)
 			{
-				if (MyIsDigit(word) == false)
+				if (MyIsDigit(word) == false || atof(word.c_str()) > 1000)
 				{
-					std::cerr << "invalid Number" << std::endl;
+					std::cerr << "invalid Number " << word << std::endl;
 					return (false);
 				}
 				tmpValue = word;
@@ -132,7 +163,7 @@ bool BitcoinExchange::readDataBase()
 			}
 		}
 		std::cout << "Date: " << tmpDate << " Value: " << tmpValue << " Word: " << word << std::endl;
-		this->data.insert(std::make_pair(tmpDate, std::stod(tmpValue.c_str())));
+		this->data.insert(std::make_pair(tmpDate, atof(tmpValue.c_str())));
 	}
 	return (true);
 }

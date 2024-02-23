@@ -6,10 +6,11 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-
+#include <cstdlib>
 class BitcoinExchange {
 	private:
 		std::map < std::string , float > data;
+		bool isDatabase;
 		bool readDataBase();
 	public:
 		BitcoinExchange ();
