@@ -50,10 +50,28 @@ static bool MyIsDigit ( std::string & num )
 	return (true);
 }
 
+static bool isLeapYear(int year) {  
+    if (year % 4 == 0) {  
+        if (year % 100 == 0) {  
+            if (year % 400 == 0) {  
+                return true;  
+            } else {  
+                return false;  
+            }  
+        } else {  
+            return true;  
+        }  
+    } else {  
+        return false;  
+    }  
+}  
+
 static bool validateDate( std::string & date )
 {
 	std::istringstream d(date);
 	std::string num;
+	bool isLeap;
+	int tmpMonth;
 	int counter = 0;
 	if (date.length() != 10)
 		return (false);
@@ -64,17 +82,20 @@ static bool validateDate( std::string & date )
 			return (false);
 		if (counter == 0 )
 		{
-			if (atoi(num.c_str()) > 2024 || num.length() != 4)
+			isLeap = isLeapYear(atoi(num.c_str()));
+			if (atoi(num.c_str()) > 2022 || num.length() != 4)
 				return (false);
 		}
 		else if (counter == 1)
 		{
-			if ((atoi(num.c_str()) > 12 || num.length() != 2))
+			tmpMonth = atoi(num.c_str());
+			if (tmpMonth > 12 || num.length() != 2)
 				return (false);
 		}
 		else if (counter == 2)
 		{
-			if (atoi(num.c_str()) > 31 || num.length() != 2)
+			if ( ( atoi(num.c_str()) == 31 && tmpMonth !=1 && tmpMonth !=3 && tmpMonth !=5 && tmpMonth !=7 && tmpMonth !=8 && tmpMonth !=10 && tmpMonth !=12 )
+			|| num.length() != 2 || (isLeap == false && tmpMonth == 2 && atoi(num.c_str()) == 29))
 				return (false);
 		}
 		counter++;
@@ -94,13 +115,15 @@ void BitcoinExchange::calculate()
 		{
 			if (validateDate(*tmpIt_date) == false)
 				std::cerr << "Error: bad input => " << *tmpIt_date << std::endl;
-			else if (*tmpIt_value < 0)
+			else if (*tmpIt_value <= 0)
 				std::cerr << "Error: not a positive number." << std::endl;
 			else if (*tmpIt_value > 2147483647.0)
 				std::cerr << "Error: too large a number." << std::endl;
 			else
 				std::cout << *tmpIt_date << " => " << *tmpIt_value << " = " << (*tmpIt_value) * tmpDataIt->second << std::endl;
 		}
+		else
+			std::cerr << "Error: bad input => " << *tmpIt_date << std::endl;
 		tmpIt_date++;
 		tmpIt_value++;
 	}
@@ -132,48 +155,33 @@ bool BitcoinExchange::readFile( std::string & aFile )
 	if (line != "date,exchange_rate" && this->currentSeparator == ',')
 		return (false);
 	else if (line != "date|value" && this->currentSeparator == '|')
-	{
-		std::cerr << "Invalid line [" << line << "]" << std::endl;
 		return (false);
-	}
 	while (myFile.good())
 	{
 		numberOfWords = 0;
 		std::getline(myFile, line);
 		cleanSpaces(line);
 		if (line.empty() || line[line.length() - 1] == this->currentSeparator)
-		{
-			std::cerr << "Invalid line [" << line << "]" << std::endl;
 			return (false);
-		}
 		std::stringstream l(line);
 		while (std::getline(l, word,this->currentSeparator))
 		{
 			if (numberOfWords == 0)
 			{
 				if (validateDate(word) == false && this->currentSeparator == ',')
-				{
-					std::cerr << "invalid Date" << std::endl;
 					return (false);
-				}
 				tmpDate = word;
 				numberOfWords++;
 			}
 			else if (numberOfWords == 1)
 			{
 				if ((MyIsDigit(word) == false || (atof(word.c_str()) > 1000 && this->currentSeparator == '|')) && this->currentSeparator == ',')
-				{
-					std::cerr << "invalid Number " << word << std::endl;
 					return (false);
-				}
 				tmpValue = word;
 				numberOfWords++;
 			}
 			else if (numberOfWords >= 2 && this->currentSeparator == ',')
-			{
-				std::cerr << "alot of arguments" << std::endl;
 				return (false);
-			}
 		}
 		if (this->currentSeparator == ',')
 			this->data.insert(std::make_pair(tmpDate, atof(tmpValue.c_str())));
