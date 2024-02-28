@@ -1,5 +1,6 @@
 #include "BitcoinExchange.hpp"
-#include <iostream>
+#include <vector>
+
 
 
 const char * BitcoinExchange::NoDatabaseProvided::what() const throw(){
@@ -11,6 +12,7 @@ const char * BitcoinExchange::WrongInputFile::what() const throw(){
 }
 
 BitcoinExchange::BitcoinExchange (){
+	this->currentSeparator = ',';
 }
 
 BitcoinExchange::BitcoinExchange ( const BitcoinExchange & aBitcoinExchange ){
@@ -54,69 +56,71 @@ static bool validateDate( std::string & date )
 	std::string num;
 	int counter = 0;
 	if (date.length() != 10)
-	{
-		std::cerr << "Date is not valid " << date << std::endl;
 		return (false);
-	}
 	while (std::getline(d, num, '-')){
 		if (counter > 2)
-		{
-			std::cerr << "Date has extra things " << num << std::endl;
 			return (false);
-		}
 		if (MyIsDigit(num) == false)
-		{
-			std::cerr << "Wrong digits " << num << std::endl;
 			return (false);
-		}
 		if (counter == 0 )
 		{
 			if (atoi(num.c_str()) > 2024 || num.length() != 4)
-			{
-				std::cerr << "year is not valid " << num << std::endl;
 				return (false);
-			}
 		}
 		else if (counter == 1)
 		{
-			if (atoi(num.c_str()) > 12 || num.length() != 2)
-			{
-				std::cerr << "month is not valid " << num << std::endl;
+			if ((atoi(num.c_str()) > 12 || num.length() != 2))
 				return (false);
-			}
 		}
 		else if (counter == 2)
 		{
 			if (atoi(num.c_str()) > 31 || num.length() != 2)
-			{
-				std::cerr << "day is not valid " << num << std::endl;
 				return (false);
-			}
 		}
 		counter++;
 	}
 	return (true);
 }
 
-static void printMap( std::map < std::string , float > & data ){
-	for (std::map < std::string , float >::iterator it = data.begin(); it != data.end(); it++)
+void BitcoinExchange::calculate()
+{
+	std::vector < std::string >::iterator tmpIt_date = this->input_date.begin();
+	std::vector < float >::iterator tmpIt_value = this->input_value.begin();
+	std::map < std::string , float >::iterator tmpDataIt;
+	while (tmpIt_date != this->input_date.end() && tmpIt_value != this->input_value.end())
 	{
-		std::cout << it->first << " " << it->second << std::endl;
+		tmpDataIt = this->data.lower_bound(*tmpIt_date);
+		if (tmpDataIt != this->data.end())
+		{
+			if (validateDate(*tmpIt_date) == false)
+				std::cerr << "Error: bad input => " << *tmpIt_date << std::endl;
+			else if (*tmpIt_value < 0)
+				std::cerr << "Error: not a positive number." << std::endl;
+			else if (*tmpIt_value > 2147483647.0)
+				std::cerr << "Error: too large a number." << std::endl;
+			else
+				std::cout << *tmpIt_date << " => " << *tmpIt_value << " = " << (*tmpIt_value) * tmpDataIt->second << std::endl;
+		}
+		tmpIt_date++;
+		tmpIt_value++;
+	}
+}
+static void cleanSpaces( std::string & aString ){
+	for (unsigned int i = 0; i < aString.length(); i++)
+	{
+		if (aString[i] == ' ' || (aString[i] >= 9 && aString[i] <= 13))
+		{
+				aString.erase(i, 1);
+				i--;
+		}
 	}
 }
 
-static void cleanSpaces( std::string & aString ){
-	while (aString[0] == ' ' || (aString[0] >= 9 && aString[0] <= 13))
-		aString.erase(0, 1);
-	while (aString[aString.length() - 1] == ' ' || (aString[aString.length() - 1] >= 9 && aString[aString.length() - 1] <= 13))
-		aString.erase(aString.length() - 1, 1);
-}
-
-bool BitcoinExchange::readDataBase()
+bool BitcoinExchange::readFile( std::string & aFile )
 {
 	std::ifstream myFile;
 	int	numberOfWords = 0;
-	myFile.open("data.csv");
+	myFile.open(aFile.c_str());
 	std::string line;
 	std::string word;
 	std::string tmpDate;
@@ -125,20 +129,29 @@ bool BitcoinExchange::readDataBase()
 		return (false);
 	std::getline(myFile, line);
 	cleanSpaces(line);
-	if (line != "date,exchange_rate")
+	if (line != "date,exchange_rate" && this->currentSeparator == ',')
 		return (false);
+	else if (line != "date|value" && this->currentSeparator == '|')
+	{
+		std::cerr << "Invalid line [" << line << "]" << std::endl;
+		return (false);
+	}
 	while (myFile.good())
 	{
 		numberOfWords = 0;
 		std::getline(myFile, line);
-		if (line[line.length() - 1] == ',')
+		cleanSpaces(line);
+		if (line.empty() || line[line.length() - 1] == this->currentSeparator)
+		{
+			std::cerr << "Invalid line [" << line << "]" << std::endl;
 			return (false);
+		}
 		std::stringstream l(line);
-		while (std::getline(l, word,','))
+		while (std::getline(l, word,this->currentSeparator))
 		{
 			if (numberOfWords == 0)
 			{
-				if (validateDate(word) == false)
+				if (validateDate(word) == false && this->currentSeparator == ',')
 				{
 					std::cerr << "invalid Date" << std::endl;
 					return (false);
@@ -148,7 +161,7 @@ bool BitcoinExchange::readDataBase()
 			}
 			else if (numberOfWords == 1)
 			{
-				if (MyIsDigit(word) == false || atof(word.c_str()) > 1000)
+				if ((MyIsDigit(word) == false || (atof(word.c_str()) > 1000 && this->currentSeparator == '|')) && this->currentSeparator == ',')
 				{
 					std::cerr << "invalid Number " << word << std::endl;
 					return (false);
@@ -156,31 +169,28 @@ bool BitcoinExchange::readDataBase()
 				tmpValue = word;
 				numberOfWords++;
 			}
-			else if (numberOfWords >= 2)
+			else if (numberOfWords >= 2 && this->currentSeparator == ',')
 			{
 				std::cerr << "alot of arguments" << std::endl;
 				return (false);
 			}
 		}
-		std::cout << "Date: " << tmpDate << " Value: " << tmpValue << " Word: " << word << std::endl;
-		this->data.insert(std::make_pair(tmpDate, atof(tmpValue.c_str())));
+		if (this->currentSeparator == ',')
+			this->data.insert(std::make_pair(tmpDate, atof(tmpValue.c_str())));
+		else if (this->currentSeparator == '|')
+		{
+			this->input_date.push_back(tmpDate);
+			this->input_value.push_back(atof(tmpValue.c_str()));
+		}
 	}
 	return (true);
 }
 
 void BitcoinExchange::btc ( std::string  aFile ){
-	if (readDataBase() == false)
+	std::string dataBase = "data.csv";
+	if (readFile(dataBase) == false)
 		throw (NoDatabaseProvided());
-	(void)aFile;
-	// std::ifstream myFile;
-	// std::string line;
-	// myFile.open(aFile);
-	// if (myFile.is_open() == false)
-	// 	throw (NoDatabaseProvided());
-	// while (myFile.good())
-	// {
-	// 	std::getline(myFile, line);
-	// 	std::cout << line << std::endl;
-	// }
-	printMap(this->data);
+	this->currentSeparator = '|';
+	readFile(aFile);
+	this->calculate();
 }

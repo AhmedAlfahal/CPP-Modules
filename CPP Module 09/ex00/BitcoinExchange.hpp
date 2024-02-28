@@ -7,11 +7,18 @@
 #include <fstream>
 #include <sstream>
 #include <cstdlib>
+#include <algorithm>
+#include <vector>
+#include <utility>
+
 class BitcoinExchange {
 	private:
+		void calculate();
+		char currentSeparator;
+		bool readFile( std::string & aFile );
 		std::map < std::string , float > data;
-		bool isDatabase;
-		bool readDataBase();
+		std::vector < std::string > input_date;
+		std::vector < float > input_value;
 	public:
 		BitcoinExchange ();
 		BitcoinExchange ( const BitcoinExchange & aBitcoinExchange );
