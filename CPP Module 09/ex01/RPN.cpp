@@ -27,20 +27,20 @@ static void concat_all ( std::string & all, char **args)
 }
 
 static bool check_word ( std::string & word ) {
-	if (word.empty())
-		return (true);
-	if ( (word[0] == '/' || word[0] == '*') && word.length() > 1)
-	{
+	static int wordCount;
+	if (word.empty() || wordCount >= 10)
 		return (false);
-	}
+	if ( ( (word[0] == '/' || word[0] == '*') && word.length() == 1 ) )
+		return (true);
 	for ( unsigned int i = 0; i < word.length(); i++ )
 	{
-		if ((( word[i] == '-' || word[i] == '+' ) && i != 0 ) || !std::isdigit(word[i]))
-		{
-			std::cout << "wrong...." << std::endl;
+		if ( (( word[i] == '-' || word[i] == '+' ) && i == 0) )
+			continue;
+		if ( std::isdigit(word[i]) == 0 )
 			return (false);
-		}
 	}
+	if (word == "-" || word == "+" || word == "*" || word == "/")
+		wordCount++;
 	return (true);
 }
 
@@ -50,10 +50,8 @@ bool RPN::pars ( char **arg ){
 	concat_all(all, arg + 1);
 	std::istringstream l(all);
 	while ( l >> word )
-	{
 		if ( !check_word(word) )
 			return (false);
-	}
 	return (true);
 }
 
