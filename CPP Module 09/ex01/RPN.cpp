@@ -1,7 +1,32 @@
 #include "RPN.hpp"
 #include <cctype>
 
+bool globalError = true;
+static int multi( std::stack < std::string > & aStack ){
+	return (1);
+}
+
+static int devide( std::stack < std::string > & aStack ){
+	return (1);
+}
+
+static int minus( std::stack < std::string > & aStack ){
+	return (1);
+}
+
+static int plus( std::stack < std::string > & aStack ){
+	return (1);
+}
+
+int (*opearationAction[4]) (std::stack < std::string > &) = {&multi, &devide, &minus, &plus};
+std::string operationsString[4] = {"*", "/", "-", "+"};
+
+int RPN::operations(){
+	return (1);
+}
+
 RPN::RPN (  ){
+	this->error = true;
 }
 
 RPN::RPN ( const RPN & aRPN ){
@@ -16,6 +41,7 @@ RPN::~RPN (  ){
 RPN & RPN::operator= ( const RPN & aRPN ){
 	if (this == &aRPN)
 		return (*this);
+	this->error = aRPN.error;
 	this->rpn = aRPN.rpn;
 	return (*this);
 }
@@ -55,6 +81,7 @@ bool RPN::pars ( char **arg ){
 	return (true);
 }
 
-int  RPN::calculate (){
-	return (1);
+bool  RPN::calculate (){
+	std::cout << 1 << std::endl;
+	return (globalError);
 }
