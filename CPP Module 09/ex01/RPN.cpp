@@ -20,7 +20,9 @@ std::stack < std::string > aStack;
 }
 
 static void opHelpHelper(int & num){
-	if (isOperation(aStack.top()) == true)
+	if (aStack.empty())
+		globalError = false;
+	else if (isOperation(aStack.top()) == true)
 		num = operations();
 	else
 	{
