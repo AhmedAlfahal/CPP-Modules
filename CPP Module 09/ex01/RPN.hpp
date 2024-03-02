@@ -5,17 +5,10 @@
 #include <stack>
 #include <string>
 #include <sstream>
-
+#include <cstdlib>
 class RPN
 {
 	private:
-		std::stack < std::string > rpn;
-		bool error;
-		int operations();
-		// int multi();
-		// int devide();
-		// int minus();
-		// int plus();
 		RPN (  );
 		RPN ( const RPN & aRPN );
 		RPN & operator= ( const RPN & aRPN );

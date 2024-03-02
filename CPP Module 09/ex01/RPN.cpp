@@ -1,32 +1,86 @@
 #include "RPN.hpp"
-#include <cctype>
+
+int operations();
+int multi(  );
+int devide(  );
+int minus(  );
+int plus(  );
 
 bool globalError = true;
-static int multi( std::stack < std::string > & aStack ){
-	return (1);
-}
-
-static int devide( std::stack < std::string > & aStack ){
-	return (1);
-}
-
-static int minus( std::stack < std::string > & aStack ){
-	return (1);
-}
-
-static int plus( std::stack < std::string > & aStack ){
-	return (1);
-}
-
-int (*opearationAction[4]) (std::stack < std::string > &) = {&multi, &devide, &minus, &plus};
+int (*opearationAction[4]) () = {&multi, &devide, &minus, &plus};
 std::string operationsString[4] = {"*", "/", "-", "+"};
+std::stack < std::string > aStack;
 
-int RPN::operations(){
+ bool isOperation( std::string & op )
+{
+	if (op == "/" || op == "*" || op == "+" || op == "-")
+		return (true);
+	else
+		return (false);
+}
+
+static void opHelpHelper(int & num){
+	if (isOperation(aStack.top()) == true)
+		num = operations();
+	else
+	{
+		num = std::atoi(aStack.top().c_str());
+		aStack.pop();
+	}
+}
+
+static void opHelper( int & first, int & second ){
+	if (aStack.size() >= 2)
+	{
+		opHelpHelper(first);
+		opHelpHelper(second);
+	}
+	else
+		globalError = false;
+}
+
+int multi(  ){
+	int first;
+	int second;
+	opHelper(first, second);
+	return (first * second);
+}
+
+int devide(  ){
+	int first;
+	int second;
+	opHelper(first, second);
+	return ( second / first );
+}
+
+int minus(  ){
+	int first;
+	int second;
+	opHelper(first, second);
+	return ( second - first );
+}
+
+int plus(  ){
+	int first;
+	int second;
+	opHelper(first, second);
+	return (first + second);
+}
+
+
+int operations(){
+	for (int i = 0; i < 4; i++)
+		if (operationsString[i] == aStack.top())
+		{
+			if (!aStack.empty())
+				aStack.pop();
+			return (opearationAction[i]());
+		}
+	globalError = false;
 	return (1);
 }
 
 RPN::RPN (  ){
-	this->error = true;
 }
 
 RPN::RPN ( const RPN & aRPN ){
@@ -41,8 +95,6 @@ RPN::~RPN (  ){
 RPN & RPN::operator= ( const RPN & aRPN ){
 	if (this == &aRPN)
 		return (*this);
-	this->error = aRPN.error;
-	this->rpn = aRPN.rpn;
 	return (*this);
 }
 
@@ -76,12 +128,17 @@ bool RPN::pars ( char **arg ){
 	concat_all(all, arg + 1);
 	std::istringstream l(all);
 	while ( l >> word )
+	{
 		if ( !check_word(word) )
 			return (false);
+		aStack.push(word);
+	}
 	return (true);
 }
 
 bool  RPN::calculate (){
-	std::cout << 1 << std::endl;
+	int result = operations();
+	if (globalError == true)
+		std::cout << result << std::endl;
 	return (globalError);
 }
