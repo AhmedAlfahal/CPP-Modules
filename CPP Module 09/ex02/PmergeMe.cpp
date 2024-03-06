@@ -18,4 +18,5 @@ PmergeMe::PmergeMe( const PmergeMe & aPmergeMe ){
 PmergeMe & PmergeMe::operator= ( const PmergeMe & aPmergeMe ){
 	if (this == &aPmergeMe)
 		return (*this);
+	return (*this);
 }

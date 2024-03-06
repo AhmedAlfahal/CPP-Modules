@@ -52,6 +52,11 @@ int devide(  ){
 	int first;
 	int second;
 	opHelper(first, second);
+	if (first == 0)
+	{
+		globalError = false;
+		return (1);
+	}
 	return ( second / first );
 }
 
@@ -72,12 +77,14 @@ int plus(  ){
 
 int operations(){
 	for (int i = 0; i < 4; i++)
+	{
 		if (operationsString[i] == aStack.top())
 		{
 			if (!aStack.empty())
 				aStack.pop();
 			return (opearationAction[i]());
 		}
+	}
 	globalError = false;
 	return (1);
 }
@@ -139,7 +146,20 @@ bool RPN::pars ( char **arg ){
 }
 
 bool  RPN::calculate (){
-	int result = operations();
+	// std::cout << "------------------------------------" << std::endl;
+	// while (!aStack.empty())
+	// {
+	// 	std::cout << "[" << aStack.top() << "]" << std::endl;
+	// 	aStack.pop();
+	// }
+	// std::cout << "------------------------------------" << std::endl;
+	int result = -1;
+	if (!aStack.empty())	
+		result = operations();
+	else
+		globalError = false;
+	if (!aStack.empty())
+		globalError = false;
 	if (globalError == true)
 		std::cout << result << std::endl;
 	return (globalError);
