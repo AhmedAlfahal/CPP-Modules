@@ -3,7 +3,7 @@
 int main ( int ac, char **args ) {
 	if ( ac < 2 )
 	{
-		std::cout << "Usage: [" << args[0] << "] {inverted Polish mathematical}" << std::endl;
+		std::cout << "Usage: [" << args[0] << "] {number should be sorted}" << std::endl;
 		return (1);
 	}
 	if (false)

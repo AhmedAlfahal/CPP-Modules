@@ -6,10 +6,8 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include <cstdlib>
 #include <algorithm>
 #include <vector>
-#include <utility>
 
 class BitcoinExchange {
 	private:
