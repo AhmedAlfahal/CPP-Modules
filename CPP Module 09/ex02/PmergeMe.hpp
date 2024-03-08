@@ -3,19 +3,22 @@
 
 #include <iostream>
 #include <deque>
-#include<list>
+#include<vector>
 #include <utility>
 #include <sstream>
+#include <cstdlib>
 class PmergeMe {
 	private:
-		std::deque< std::pair<int, int >> aDeque;
-		std::list< std::pair<int, int> > aList;
+		std::string odd;
+		std::deque< std::pair< int, int > > aDeque;
+		std::vector< std::pair< int, int> > aVector;
+	public:
 		PmergeMe();
 		PmergeMe( const PmergeMe & aPmergeMe );
 		PmergeMe & operator= ( const PmergeMe & aPmergeMe );
 		~PmergeMe();
-	public:
-		static bool pars ( char **args );
+		bool pars ( char **args );
+		void sort();
 
 };
 

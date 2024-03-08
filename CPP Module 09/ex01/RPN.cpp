@@ -9,7 +9,7 @@ int plus(  );
 bool globalError = true;
 int (*opearationAction[4]) () = {&multi, &devide, &minus, &plus};
 std::string operationsString[4] = {"*", "/", "-", "+"};
-std::stack < std::string > aStack;
+std::stack < std::string, std::list < std::string > > aStack;
 
  bool isOperation( std::string & op )
 {
