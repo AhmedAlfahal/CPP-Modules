@@ -1,9 +1,8 @@
 #include "PmergeMe.hpp"
-#include <any>
-#include <type_traits>
-#include <utility>
+#include <deque>
 
-
+std::deque< int > sortedDeque ;
+std::vector< int > sortedVector ;
 
 PmergeMe::PmergeMe(){
 	this->odd = "ZEROOO";
@@ -87,9 +86,6 @@ bool PmergeMe::pars ( char **arg ){
 	if (i % 2 == 1)
 		this->odd = word;
 	std::cout << "Before: " << all << std::endl;
-	// print(this->aVector);
-	// print(this->aDeque);
-	// std::cout << this->odd << std::endl;
 	return (true);
 }
 
@@ -103,36 +99,60 @@ void sort_each_pair( T& t)
     }
 }
 
-// template<typename T>
-void sort_by_larger_value(  std::vector< std::pair< int, int> >::iterator  begin , std::vector< std::pair< int, int> >::iterator  end, size_t size)
-{
-	std::cout << "first " << begin->first << " second " << (end)->first << " size " << size << std::endl;
-	// std::cout << "size after division " << (size / 2) << " value " << (begin + (size / 2) - 1)->first << std::endl;
-	// exit(1);
-	if (size > 2)
+template<typename T>
+static void merge( T & left, T & right, T & comb ) {
+	int leftSize = left.size();
+	int rightSize = right.size();
+	int i = 0;
+	int l = 0;
+	int r = 0;
+	for (; l < leftSize && r < rightSize; i++)
 	{
-		sort_by_larger_value(begin, begin + (size / 2)  , size / 2);
-		sort_by_larger_value(begin + (size / 2) , begin + size - 1 , size / 2);
+		if (left[l].second < right[r].second)
+			comb[i].second = left[l++].second;
+		else
+		 	comb[i].second = right[r++].second;
 	}
-	std::vector< std::pair< int, int> > aVector (begin, end);
-	print(aVector);
-	exit(1);
-	// else if (size == 2)
-	// {
-		if ( begin->first > end->first )
-		{
-			std::cout << "size = " << size << " begin = " << begin->first << " end = " << end->first << std::endl;
-			std::swap(begin->first, end->first);
-		}
-		// return ;
-	// }
-	
+	for (; l < leftSize; i++)
+		comb[i].second = left[l++].second;
+	for (; r < rightSize; i++)
+		comb[i].second = right[r++].second;
 }
 
+template<typename T>
+void mergeSort(  T & comb , size_t size)
+{
+	if (size == 1)
+		return ;
+	std::vector< std::pair< int, int> > left (comb.begin(), comb.begin() + (size / 2));
+	std::vector< std::pair< int, int> > right (comb.begin() + (size / 2), comb.end());
+	mergeSort(left, left.size());
+	mergeSort(right, right.size());
+	merge(left, right, comb);
+}
+
+template<typename T>
+void insertionSort(  T & comb )
+{
+	if (typeid(T) == typeid(std::vector< std::pair < int, int > >))
+	{
+		
+	}
+	else
+	{
+	
+	}
+}
+
+template<typename T>
+void fordJonson(  T & comb )
+{
+	sort_each_pair(comb);
+	mergeSort(comb, comb.size());
+	insertionSort(comb);
+}
 void PmergeMe::sort (  ){
-	sort_each_pair(this->aVector);
-	print(this->aVector);
-	std::cout << "After sorting pairs" << std::endl;
-	sort_by_larger_value(this->aVector.begin(), --this->aVector.end(), this->aVector.size());
+	fordJonson(this->aVector);
+	std::cout << "After: ";
 	print(this->aVector);
 }
