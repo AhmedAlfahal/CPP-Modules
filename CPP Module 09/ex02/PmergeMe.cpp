@@ -106,18 +106,26 @@ void sort_each_pair( T& t)
 // template<typename T>
 void sort_by_larger_value(  std::vector< std::pair< int, int> >::iterator  begin , std::vector< std::pair< int, int> >::iterator  end, size_t size)
 {
-		std::cout << "first " << begin->first << " second " << (end)->first << " size " << size << std::endl;
+	std::cout << "first " << begin->first << " second " << (end)->first << " size " << size << std::endl;
+	// std::cout << "size after division " << (size / 2) << " value " << (begin + (size / 2) - 1)->first << std::endl;
+	// exit(1);
 	if (size > 2)
 	{
-		sort_by_larger_value(begin, begin + (size / 2) , size / 2);
-		sort_by_larger_value(begin + size / 2, begin + size, size / 2);
+		sort_by_larger_value(begin, begin + (size / 2)  , size / 2);
+		sort_by_larger_value(begin + (size / 2) , begin + size - 1 , size / 2);
 	}
-	else if (size == 2)
-	{
-		if (begin->first > end->first)
+	std::vector< std::pair< int, int> > aVector (begin, end);
+	print(aVector);
+	exit(1);
+	// else if (size == 2)
+	// {
+		if ( begin->first > end->first )
+		{
+			std::cout << "size = " << size << " begin = " << begin->first << " end = " << end->first << std::endl;
 			std::swap(begin->first, end->first);
-		return ;
-	}
+		}
+		// return ;
+	// }
 	
 }
 
