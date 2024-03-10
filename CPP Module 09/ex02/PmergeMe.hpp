@@ -7,9 +7,11 @@
 #include <vector>
 #include <sstream>
 #include <cstdlib>
+#include <sys/time.h>
+#include <iomanip>
+
 class PmergeMe {
 	private:
-		std::string odd;
 		std::deque< std::pair< int, int > > aDeque;
 		std::vector< std::pair< int, int> > aVector;
 	public:
