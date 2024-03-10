@@ -1,5 +1,6 @@
 #include "PmergeMe.hpp"
 #include <deque>
+#include <sys/_types/_size_t.h>
 
 std::deque< int > sortedDeque ;
 std::vector< int > sortedVector ;
@@ -42,6 +43,19 @@ void print( T& t)
 		std::cout << it->second << " ";
 	std::cout << "]" << std::endl;
     }
+	std::cout << "--------------------------------------------" << std::endl;
+}
+
+template<typename T>
+void printS( T& t)
+{	
+	std::cout << "--------------------------------------------" << std::endl;
+	typename T::iterator it;
+	std::cout << "[ ";
+	for (it = t.begin(); it != t.end(); ++it) {
+		std::cout << *it << " ";
+    }
+	std::cout << " ]" << std::endl;
 	std::cout << "--------------------------------------------" << std::endl;
 }
 
@@ -109,14 +123,14 @@ static void merge( T & left, T & right, T & comb ) {
 	for (; l < leftSize && r < rightSize; i++)
 	{
 		if (left[l].second < right[r].second)
-			comb[i].second = left[l++].second;
+			std::swap(comb[i], left[l++]);
 		else
-		 	comb[i].second = right[r++].second;
+		 	std::swap(comb[i],right[r++]);
 	}
 	for (; l < leftSize; i++)
-		comb[i].second = left[l++].second;
+		std::swap(comb[i], left[l++]);
 	for (; r < rightSize; i++)
-		comb[i].second = right[r++].second;
+		std::swap(comb[i], right[r++]);
 }
 
 template<typename T>
@@ -131,16 +145,30 @@ void mergeSort(  T & comb , size_t size)
 	merge(left, right, comb);
 }
 
-template<typename T>
-void insertionSort(  T & comb )
+template<typename T, typename U>
+void insertionSort(  T & comb, U & single )
 {
-	if (typeid(T) == typeid(std::vector< std::pair < int, int > >))
+	typename T::iterator it = comb.begin();
+	for (; it != comb.end(); it++)
 	{
-		
+		if (it == comb.begin())
+		{
+			single.push_back(it->first);
+			single.push_back(it->second);
+			continue;
+		}
+		single.push_back(it->second);
 	}
-	else
+	printS(sortedVector);
+	it = comb.begin();
+	for (; it != comb.end(); it++)
 	{
-	
+		if (it != comb.begin())
+		{
+			std::cout << it->first << std::endl;
+			single.insert(std::lower_bound(single.begin(), single.end(), it->first), it->first);
+			printS(single);
+		}
 	}
 }
 
@@ -149,10 +177,15 @@ void fordJonson(  T & comb )
 {
 	sort_each_pair(comb);
 	mergeSort(comb, comb.size());
-	insertionSort(comb);
+	print(comb);
+	if (typeid(T) == typeid(std::vector< std::pair < int, int > >))
+		insertionSort(comb, sortedVector);
+	else
+		insertionSort(comb, sortedDeque);	
 }
 void PmergeMe::sort (  ){
-	fordJonson(this->aVector);
-	std::cout << "After: ";
 	print(this->aVector);
+	fordJonson(this->aVector);
+	std::cout << "After: " << std::endl;
+	printS(sortedVector);
 }

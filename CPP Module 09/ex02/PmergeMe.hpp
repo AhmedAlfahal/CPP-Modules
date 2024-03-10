@@ -2,9 +2,9 @@
 #define PMERGEME_HPP
 
 #include <iostream>
+#include <algorithm>
 #include <deque>
-#include<vector>
-#include <utility>
+#include <vector>
 #include <sstream>
 #include <cstdlib>
 class PmergeMe {
