@@ -146,13 +146,6 @@ bool RPN::pars ( char **arg ){
 }
 
 bool  RPN::calculate (){
-	// std::cout << "------------------------------------" << std::endl;
-	// while (!aStack.empty())
-	// {
-	// 	std::cout << "[" << aStack.top() << "]" << std::endl;
-	// 	aStack.pop();
-	// }
-	// std::cout << "------------------------------------" << std::endl;
 	int result = -1;
 	if (!aStack.empty())	
 		result = operations();

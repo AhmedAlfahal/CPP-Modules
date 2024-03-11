@@ -1,14 +1,11 @@
 #include "BitcoinExchange.hpp"
-#include <vector>
 
-
-
-const char * BitcoinExchange::NoDatabaseProvided::what() const throw(){
-	return ("BitcoinExchange::NoDatabaseProvided");
+const char * BitcoinExchange::NoFileFound::what() const throw(){
+	return ("BitcoinExchange::NoFileFound");
 }
 
-const char * BitcoinExchange::WrongInputFile::what() const throw(){
-	return ("BitcoinExchange::WrongInputFile");
+const char * BitcoinExchange::WrongInput::what() const throw(){
+	return ("BitcoinExchange::WrongInput");
 }
 
 BitcoinExchange::BitcoinExchange (){
@@ -103,30 +100,18 @@ static bool validateDate( std::string & date )
 	return (true);
 }
 
-void BitcoinExchange::calculate()
+void BitcoinExchange::calculate( std::string aDate, float aValue )
 {
-	std::vector < std::string >::iterator tmpIt_date = this->input_date.begin();
-	std::vector < float >::iterator tmpIt_value = this->input_value.begin();
 	std::map < std::string , float >::iterator tmpDataIt;
-	while (tmpIt_date != this->input_date.end() && tmpIt_value != this->input_value.end())
-	{
-		tmpDataIt = this->data.lower_bound(*tmpIt_date);
-		if (tmpDataIt != this->data.end())
-		{
-			if (validateDate(*tmpIt_date) == false)
-				std::cerr << "Error: bad input => " << *tmpIt_date << std::endl;
-			else if (*tmpIt_value <= 0)
-				std::cerr << "Error: not a positive number." << std::endl;
-			else if (*tmpIt_value > 2147483647.0)
-				std::cerr << "Error: too large a number." << std::endl;
-			else
-				std::cout << *tmpIt_date << " => " << *tmpIt_value << " = " << (*tmpIt_value) * tmpDataIt->second << std::endl;
-		}
-		else
-			std::cerr << "Error: bad input => " << *tmpIt_date << std::endl;
-		tmpIt_date++;
-		tmpIt_value++;
-	}
+	tmpDataIt = this->data.lower_bound(aDate);
+	if (validateDate(aDate) == false)
+		std::cerr << "Error: bad input => " << aDate << std::endl;
+	else if (aValue <= 0)
+		std::cerr << "Error: not a positive number." << std::endl;
+	else if (aValue > 2147483647.0)
+		std::cerr << "Error: too large a number." << std::endl;
+	else
+		std::cout << aDate << " => " << aValue << " = " << (aValue) * tmpDataIt->second << std::endl;
 }
 static void cleanSpaces( std::string & aString ){
 	for (unsigned int i = 0; i < aString.length(); i++)
@@ -149,7 +134,7 @@ bool BitcoinExchange::readFile( std::string & aFile )
 	std::string tmpDate;
 	std::string tmpValue;
 	if (myFile.is_open() == false)
-		return (false);
+		throw NoFileFound();
 	std::getline(myFile, line);
 	cleanSpaces(line);
 	if (line != "date,exchange_rate" && this->currentSeparator == ',')
@@ -186,10 +171,7 @@ bool BitcoinExchange::readFile( std::string & aFile )
 		if (this->currentSeparator == ',')
 			this->data.insert(std::make_pair(tmpDate, atof(tmpValue.c_str())));
 		else if (this->currentSeparator == '|')
-		{
-			this->input_date.push_back(tmpDate);
-			this->input_value.push_back(atof(tmpValue.c_str()));
-		}
+			this->calculate(tmpDate, std::atof(tmpValue.c_str()));
 	}
 	return (true);
 }
@@ -197,8 +179,7 @@ bool BitcoinExchange::readFile( std::string & aFile )
 void BitcoinExchange::btc ( std::string  aFile ){
 	std::string dataBase = "data.csv";
 	if (readFile(dataBase) == false)
-		throw (NoDatabaseProvided());
+		throw (WrongInput());
 	this->currentSeparator = '|';
 	readFile(aFile);
-	this->calculate();
 }
