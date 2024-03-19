@@ -100,18 +100,23 @@ static bool validateDate( std::string & date )
 	return (true);
 }
 
-void BitcoinExchange::calculate( std::string aDate, float aValue )
+void BitcoinExchange::calculate( std::string & aDate, std::string & aValue )
 {
 	std::map < std::string , float >::iterator tmpDataIt;
 	tmpDataIt = this->data.lower_bound(aDate);
+	if (tmpDataIt != this->data.begin() && tmpDataIt->first != aDate)
+		tmpDataIt--;
+	float floatedValue = atof(aValue.c_str());
 	if (validateDate(aDate) == false)
 		std::cerr << "Error: bad input => " << aDate << std::endl;
-	else if (aValue <= 0)
+	else if (MyIsDigit(aValue) == false)
+		std::cerr << "Error: bad input => " << aValue << std::endl;
+	else if (floatedValue <= 0)
 		std::cerr << "Error: not a positive number." << std::endl;
-	else if (aValue > 2147483647.0)
+	else if (floatedValue > 1000)
 		std::cerr << "Error: too large a number." << std::endl;
 	else
-		std::cout << aDate << " => " << aValue << " = " << (aValue) * tmpDataIt->second << std::endl;
+		std::cout << aDate << " => " << floatedValue << " = " << (floatedValue) * tmpDataIt->second << std::endl;
 }
 static void cleanSpaces( std::string & aString ){
 	for (unsigned int i = 0; i < aString.length(); i++)
@@ -140,13 +145,15 @@ bool BitcoinExchange::readFile( std::string & aFile )
 	if (line != "date,exchange_rate" && this->currentSeparator == ',')
 		return (false);
 	else if (line != "date|value" && this->currentSeparator == '|')
-		return (false);
+		throw (WrongInput());;
 	while (myFile.good())
 	{
 		numberOfWords = 0;
 		std::getline(myFile, line);
 		cleanSpaces(line);
-		if (line.empty() || line[line.length() - 1] == this->currentSeparator)
+		if (line.empty() == true)
+			continue ;
+		if (!line.empty() && line[line.length() - 1] == this->currentSeparator)
 			return (false);
 		std::stringstream l(line);
 		while (std::getline(l, word,this->currentSeparator))
@@ -160,7 +167,7 @@ bool BitcoinExchange::readFile( std::string & aFile )
 			}
 			else if (numberOfWords == 1)
 			{
-				if ((MyIsDigit(word) == false || (atof(word.c_str()) > 1000 && this->currentSeparator == '|')) && this->currentSeparator == ',')
+				if ((MyIsDigit(word) == false) && this->currentSeparator == ',')
 					return (false);
 				tmpValue = word;
 				numberOfWords++;
@@ -171,7 +178,7 @@ bool BitcoinExchange::readFile( std::string & aFile )
 		if (this->currentSeparator == ',')
 			this->data.insert(std::make_pair(tmpDate, atof(tmpValue.c_str())));
 		else if (this->currentSeparator == '|')
-			this->calculate(tmpDate, std::atof(tmpValue.c_str()));
+			this->calculate(tmpDate, tmpValue);
 	}
 	return (true);
 }

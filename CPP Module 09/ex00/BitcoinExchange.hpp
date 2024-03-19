@@ -10,7 +10,7 @@
 
 class BitcoinExchange {
 	private:
-		void calculate( std::string aDate, float aValue );
+		void calculate( std::string & aDate, std::string & aValue );
 		char currentSeparator;
 		bool readFile( std::string & aFile );
 		std::map < std::string , float > data;
