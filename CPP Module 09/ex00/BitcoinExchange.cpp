@@ -153,7 +153,7 @@ bool BitcoinExchange::readFile( std::string & aFile )
 		cleanSpaces(line);
 		if (line.empty() == true)
 			continue ;
-		if (!line.empty() && line[line.length() - 1] == this->currentSeparator)
+		if (line[line.length() - 1] == this->currentSeparator)
 			return (false);
 		std::stringstream l(line);
 		while (std::getline(l, word,this->currentSeparator))

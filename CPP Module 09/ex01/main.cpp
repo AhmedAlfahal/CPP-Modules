@@ -6,7 +6,7 @@ int main ( int ac, char **args ) {
 		std::cout << "Usage: [" << args[0] << "] {inverted Polish mathematical}" << std::endl;
 		return (1);
 	}
-	if (RPN::pars(args) == false || RPN::calculate() == false)
+	if (RPN::pars(std::string(args[1])) == false || RPN::calculate() == false)
 	{
 		std::cout << "Error" << std::endl;
 		return (1);

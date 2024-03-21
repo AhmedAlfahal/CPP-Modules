@@ -107,12 +107,6 @@ RPN & RPN::operator= ( const RPN & aRPN ){
 	return (*this);
 }
 
-static void concat_all ( std::string & all, char **args)
-{
-	for ( int i = 0; args[i]; i++ )
-		all = all + std::string(args[i]) + " " ;
-}
-
 static bool check_word ( std::string & word ) {
 	static int wordCount;
 	if (word.empty() || wordCount >= 10)
@@ -131,10 +125,8 @@ static bool check_word ( std::string & word ) {
 	return (true);
 }
 
-bool RPN::pars ( char **arg ){
-	std::string all;
+bool RPN::pars ( std::string  all ){
 	std::string word;
-	concat_all(all, arg + 1);
 	std::istringstream l(all);
 	while ( l >> word )
 	{

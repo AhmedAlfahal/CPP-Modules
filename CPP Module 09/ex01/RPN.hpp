@@ -15,7 +15,7 @@ class RPN
 		RPN & operator= ( const RPN & aRPN );
 		~RPN (  );
 	public:
-		static bool pars ( char **args );
+		static bool pars ( std::string all );
 		static bool  calculate ();
 };
 
